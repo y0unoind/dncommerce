@@ -526,8 +526,9 @@ body {
         linear-gradient(transparent, #000),
         url('../img/bifc.jpg');
 
+        background-size: cover;
+    background-position: center center;
     background-repeat: no-repeat;
-    background-size: cover;
     display: flex;
 
     width: 48.5%;
@@ -549,6 +550,7 @@ body {
     background-image:
         linear-gradient(transparent, #000),
         url('../img/42_m_gobul.png');
+ 
 }
 
 .section03 .inner .list .item:nth-child(3) {
@@ -923,10 +925,14 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: start;
+    gap: 15px;
+    row-gap: 30px;
     /* 화살표 상단 배치 */
 }
 
-.footer .footer_container .footer_top .logo {}
+.footer .footer_container .footer_top .logo {
+   
+}
 
 .footer .footer_container .footer_top .logo a {}
 
@@ -935,13 +941,24 @@ body {
 .footer .footer_container .footer_top .text {
     width: 70%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     line-height: 150%;
 
     font-size: 1.25rem;
     letter-spacing: (-0.05 * 1.25rem);
-}
 
+
+    
+}
+.footer .footer_container .footer_top .text {
+    display: flex;
+    justify-content: space-between;
+
+}
+.footer .footer_container .footer_top .text .footer_info {
+    line-height: 200%;
+}
 .footer .footer_container .footer_bottom {
     display: flex;
     justify-content: space-between;
@@ -979,7 +996,7 @@ body {
 
 @media screen and (max-width: 1024px) {
     .header {
-        position: relative;
+        
         height: 80px;
     }
 
@@ -1092,6 +1109,8 @@ body {
     .section03 .inner .list .item {
         flex: 1 1 100%;
         padding: 20px;
+        height: 55vw;
+        width: 100%;
     }
 
     .section03 .inner .title_wrap h3 {
@@ -1189,6 +1208,29 @@ body {
     .section02 .scrollSwiper .swiper-slide .text h2 {
         font-size: 2.2rem;
     }
+    .footer .footer_container {
+        margin:  0 15px;
+    }
+    .footer .footer_container .footer_top {
+        display: block;
+    }
+    .footer .footer_container .footer_top .text{
+       
+        row-gap: 30px;
+    }
+    .footer .footer_container .footer_top .text .text-top .footer_info {
+        white-space: nowrap;
+        
+    }
+    .footer .footer_container .footer_bottom {
+        flex-direction: column;
+        margin-top: 6.25rem;
+    }
+
+    .footer .footer_container .footer_bottom img {
+        width: 40%;
+        margin-top: 1.25rem;
+    }
 }
 
 
@@ -1200,9 +1242,9 @@ body {
         width: 28px;
         height: auto;
     }
-    .main_visual p:first-of-type{
-        top: 5.96vh;
-    }
+
+   
+
     .section01 {}
 
     .section01 h3 {
@@ -1226,9 +1268,7 @@ body {
     }
 
 
-    .section04 .inner .solutionSwiper {
-   
-    }
+    .section04 .inner .solutionSwiper {}
 
     .section04 .inner .solutionSwiper .swiper-wrapper {}
 
@@ -1239,12 +1279,19 @@ body {
     .section05 {}
 
     .section05 .word-container {}
+
     .section05 {}
 
     .section05 .word-container {}
 
     .section05 .word-container .word {
         height: 30vh;
+    }
+
+    
+    .section06 .inner .text h2 br {
+        display: none;
+        
     }
 
     .section07 h3 {
@@ -1264,6 +1311,7 @@ body {
 
     .footer .footer_container .footer_top .text {
         font-size: 14px;
+        
     }
 
     .footer .footer_container .footer_top {
@@ -1274,13 +1322,15 @@ body {
     }
 
     .footer .footer_container .footer_top .text {
-        flex-direction: column;
+      
         row-gap: 30px;
     }
 
-    .footer .footer_container .footer_top .text .textbottom {
+    .footer .footer_container .footer_top .text {
         display: flex;
         justify-content: space-between;
+        gap: 20px;
+        width: 100%;
     }
 
     .footer .footer_container .footer_top .text .text-top .footer_info {
@@ -1289,7 +1339,7 @@ body {
 
     .footer .footer_container .footer_bottom {
         flex-direction: column;
-        margin-top: 40px;
+        
     }
 
     .footer .footer_container .footer_bottom p {

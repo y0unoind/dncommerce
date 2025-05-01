@@ -103,37 +103,38 @@
             });
 
             $(document).ready(function () {
-    var swiper = new Swiper('.solutionSwiper', {
-        effect: "coverflow",
-        grabCursor: true,
-        centeredSlides: true,
-        coverflowEffect: {
-            rotate: 30,      // 양 옆 슬라이드 회전 각도
-            stretch: 0,      // 슬라이드 사이 간격을 당겨줌
-            depth: 150,      // z축 깊이
-            modifier: 1,     // 효과 강도
-            slideShadows: false,
-        },
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true
-        },
-        breakpoints: {
-            0: {
-                slidesPerView: 1.2,
-                spaceBetween: 10
-            },
-            768: {
-                slidesPerView: 2,
-                spaceBetween: 20
-            },
-            1024: {
-                slidesPerView: 3,
-                spaceBetween: 30
-            }
-        }
-    });
-});
+                var swiper = new Swiper('.solutionSwiper', {
+                    effect: "coverflow",
+                    grabCursor: true,
+                    centeredSlides: true,
+                    coverflowEffect: {
+                        rotate: 30,      // 양 옆 슬라이드 회전 각도
+                        stretch: 0,      // 슬라이드 사이 간격을 당겨줌
+                        depth: 150,      // z축 깊이
+                        modifier: 1,     // 효과 강도
+                        slideShadows: false,
+                    },
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true
+                    },
+                    /* 스와이퍼 반응형 */
+                    breakpoints: {
+                        0: {
+                            slidesPerView: 1.2,
+                            spaceBetween: 10
+                        },
+                        768: {
+                            slidesPerView: 2,
+                            spaceBetween: 20
+                        },
+                        1024: {
+                            slidesPerView: 3,
+                            spaceBetween: 30
+                        }
+                    }
+                });
+            });
 
 
         });
@@ -704,52 +705,52 @@
                 </div> <!-- logo -->
                 <div class="text">
 
-                    <div class="text-top">
-                        <p class="footer_info text_mobile">
-                            부산광역시 사상구 주례로 19, 2F, 디앤커머스 <br>
-                            사업자번호 : 376-04-01199 <br>
-                            대표자 : 양욱제, 김성훈<br>
-                            TEL : 051-710-2959 <br>
-                            E-mail : dncommerce.corp@gmail.com
-                        </p>
-                    </div> <!-- text-top -->
 
-                    <div class="textbottom">
+                    <p class="footer_info text_mobile">
+                        부산광역시 사상구 주례로 19, 2F, 디앤커머스 <br>
+                        사업자번호 : 376-04-01199 <br>
+                        대표자 : 양욱제, 김성훈<br>
+                        TEL : 051-710-2959 <br>
+                        E-mail : dncommerce.corp@gmail.com
+                    </p>
 
-                        <div class="text-bottom1">
-                            <a href="#">
-                                <p>ABOUT</p>
-                            </a>
-                            <a href="#">
-                                <p>SERVICE</p>
-                            </a>
-                            <a href="#">
-                                <p>PROJECT</p>
-                            </a>
-                            <a href="#">
-                                <p>SOLUTION</p>
-                            </a>
-                            <a href="#">
-                                <p>CONTACT</p>
-                            </a>
-                        </div> <!-- text-bottom1 -->
 
-                        <div class="text-bottom2">
-                            <a href="#">
-                                <p>BLOG</p>
-                            </a>
-                            <a href="#">
-                                <p>KAKKOTALK</p>
-                            </a>
-                            <a href="#">
-                                <p>INSTAGRAM</p>
-                            </a>
-                            <a href="#">
-                                <p>CALL</p>
-                            </a>
-                        </div> <!-- text-bottom2 -->
 
-                    </div>
+
+                    <div class="text-bottom1">
+                        <a href="#">
+                            <p>ABOUT</p>
+                        </a>
+                        <a href="#">
+                            <p>SERVICE</p>
+                        </a>
+                        <a href="#">
+                            <p>PROJECT</p>
+                        </a>
+                        <a href="#">
+                            <p>SOLUTION</p>
+                        </a>
+                        <a href="#">
+                            <p>CONTACT</p>
+                        </a>
+                    </div> <!-- text-bottom1 -->
+
+                    <div class="text-bottom2">
+                        <a href="#">
+                            <p>BLOG</p>
+                        </a>
+                        <a href="#">
+                            <p>KAKKOTALK</p>
+                        </a>
+                        <a href="#">
+                            <p>INSTAGRAM</p>
+                        </a>
+                        <a href="#">
+                            <p>CALL</p>
+                        </a>
+                    </div> <!-- text-bottom2 -->
+
+
 
                 </div> <!-- text -->
                 <img src="img/arrow_upward.svg" alt="">
