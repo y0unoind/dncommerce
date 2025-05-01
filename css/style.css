@@ -803,9 +803,11 @@ position: absolute;
 }
 
 .section07 h3 {
+    width: 100%;
     font-size: 3.5rem;
     margin-bottom: 6.25rem;
     font-family: "Pretendard-Bold";
+    text-align: center;
 }
 
 .section07 .rolling {
@@ -1155,7 +1157,7 @@ position: absolute;
     }
 
     .section07 h3 {
-        font-size: 2rem;
+        font-size: 3.5rem;
     }
 
 
@@ -1210,6 +1212,11 @@ position: absolute;
     .section05 .word-container{}
     .section05 .word-container .word{
         height: 30vh;
+    }
+
+    .section07 h3 {
+        font-size: 2rem;
+        margin-bottom: 3.75rem;
     }
     .footer {
         font-size: 0.875rem;
