@@ -1,0 +1,182 @@
+/* footer */
+footer {
+  width: 100%;
+  overflow: hidden;
+  background-color: #fff;
+}
+.footer_container {
+  width: calc(100% - 120px);
+  margin: 0 auto;
+  padding: 60px 0;
+  font-family: "Pretendard-Medium";
+}
+.footer_inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 15px;
+}
+.footer_top {
+  display: flex;
+  width: 70%;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  font-size: 1.25rem;
+  letter-spacing: calc(-0.05 * 1.25rem);
+  gap: 15px;
+  row-gap: 30px;
+  line-height: 150%;
+}
+.footer_top > p {
+  line-height: 200%;
+  color: #000;
+}
+.footer_bottom_text {
+  margin-top: 10rem;
+  font-size: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+.footer_bottom_text img {
+  width: 10%;
+}
+
+.scroll-top-btn {
+  cursor: pointer;
+}
+
+/* 플로팅 버튼 */
+
+.floBanPc1 svg {
+  display: block;
+}
+.floBanPc1 img {
+  filter: invert(1);
+}
+
+.floBanPc1 {
+  position: fixed;
+  bottom: 50px; /* 원하는 위치 */
+  right: 40px; /* 화면 오른쪽에 고정 */
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: rgba(102, 102, 102, 0.6); /* #666666 60% */
+  backdrop-filter: blur(10px); /* 배경 블러 효과 */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 99;
+  animation: rotateButton 10s linear infinite; /* 버튼 상시 회전 */
+}
+
+.floBanPc1 img {
+  transform: rotate(45deg);
+}
+
+.floBanPc1 a {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+}
+
+/* SVG 텍스트 */
+.floBanPc1 svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.floBanPc1 svg text {
+  fill: white;
+  font-size: 12px;
+  letter-spacing: 1px; /* 글자 간격 조정 */
+  text-transform: uppercase;
+}
+
+.floBanPc1 svg textPath {
+  word-spacing: 15px; /* 텍스트 간의 간격 조정 */
+}
+
+/* 버튼 회전 애니메이션 */
+@keyframes rotateButton {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 반응형 */
+@media screen and (max-width: 1230px) {
+  .footer_container {
+    width: calc(100% - 60px);
+  }
+}
+@media screen and (max-width: 960px) {
+  .footer_container {
+    width: calc(100% - 30px);
+  }
+  .footer_inner .logo img {
+    width: 50px !important;
+  }
+  .footer_top {
+    font-size: 14px;
+  }
+  .footer_top > img {
+    width: 30px;
+  }
+  .footer_bottom_text {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 690px) {
+  .floBanPc1 {
+    width: 100px;
+    height: 100px;
+  }
+  .footer_bottom_text {
+    display: block;
+  }
+  .footer_bottom_text img {
+    width: 40%;
+    margin-top: 20px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .footer_container {
+    padding: 30px 0;
+  }
+  .footer_inner {
+    flex-direction: column;
+    row-gap: 30px;
+    position: relative;
+  }
+  .footer_top > p {
+    min-width: 250px;
+  }
+  .scroll-top-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  .footer_bottom_text {
+    margin-top: 40px;
+  }
+  .floBanPc1 {
+    width: 80px;
+    height: 80px;
+    right: 15px;
+    bottom: 15px;
+  }
+}

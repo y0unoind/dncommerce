@@ -1,0 +1,1068 @@
+@import url("reset.css");
+
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
+
+@font-face {
+    font-family: "Pretendard-Regular";
+    src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff") format("woff");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Pretendard-SemiBold";
+    src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff") format("woff");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Pretendard-Bold";
+    src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff") format("woff");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Pretendard-Medium";
+    src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff") format("woff");
+    font-weight: 500;
+    font-style: normal;
+}
+
+
+body {
+    font-family: "Pretendard-Regular";
+    color: #333;
+
+}
+
+.header.scrolled {
+    background: linear-gradient(hsla(0, 0%, 63%, 0.4), hsla(0, 0%, 40%, 0.4));
+    background-color: transparent;
+    transition: 0.3s;
+    color: #fff;
+}
+
+.header {
+    width: 100%;
+    height: 100px;
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: 0.3s;
+    font-family: "Bricolage Grotesque-Medium";
+    z-index: 99999 !important;
+    pointer-events: auto !important;
+
+}
+
+.header .inner {
+    max-width: 1920px;
+    width: calc(100% - 60px);
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.header .inner .logo img {
+
+    max-width: 265px;
+    width: 100%;
+    z-index: 9;
+    position: relative;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.header .inner .nav {
+    height: 100%;
+    font-size: 1.25rem;
+    width: 100%;
+    font-family: "Bricolage Grotesque-Medium";
+    font-weight: 500;
+}
+
+.header .inner .menu_btn {
+    z-index: 9999;
+    transition: 0.5s;
+    width: 20px;
+    cursor: pointer;
+}
+
+.header .inner .menu_btn.on {
+    transform: rotate(225deg);
+}
+
+.header .inner .nav .gnb {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+.header .inner .pc_nav .gnb>li .depth01 {
+    line-height: 100px;
+    cursor: pointer;
+    padding: 0 70px;
+    position: relative;
+    text-align: center;
+    display: block;
+}
+
+.header .inner .pc_nav .gnb>li:hover~li .depth02,
+.header .inner .pc_nav .gnb>li:hover .depth02,
+.header .inner .pc_nav .gnb>li:hover~li~li .depth02 {
+    display: block;
+
+}
+
+.header .inner .pc_nav .gnb>li .depth02 {
+    display: none;
+    text-align: center;
+    max-height: 240px;
+
+}
+
+.header .inner .pc_nav .gnb>li .depth02 li {
+    padding: 20px 0;
+}
+
+.header .inner .nav .gnb li .depth01:hover {
+    color: #1500ff;
+    transition: 0.5s;
+}
+
+/* header mobile_nav */
+.header .mobile_nav {
+    width: 100%;
+    height: 100vh;
+    background: url('../img/menu_bg.png') center center / cover no-repeat;
+    position: fixed;
+    top: -5000%;
+    left: 0;
+    z-index: 11;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: top 0.7s;
+}
+
+.header .mobile_nav.on {
+    top: 0;
+}
+
+.header .mobile_nav .gnb {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.header .mobile_nav .gnb li {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 50px;
+    position: relative;
+
+}
+
+.header .mobile_nav .gnb li .depth-01 {
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: right;
+    flex: none;
+    white-space: nowrap;
+    color: #fff;
+    min-width: 200px;
+
+}
+
+.header .mobile_nav .gnb li a:first-child {
+    align-items: flex-end;
+    display: flex;
+    align-self: flex-start;
+    flex-direction: column;
+
+}
+
+
+
+.header .mobile_nav .gnb li ul li a {
+    font-size: 28px;
+    font-weight: 500;
+    color: #ffffffcc;
+}
+
+.header .mobile_nav .gnb li .depth-02 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: left;
+    font-size: 1.75rem;
+    line-height: 1.4;
+    min-width: 250px;
+    align-self: auto;
+}
+
+/* 헤더 밎 메뉴 배경 */
+.pc_bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    backdrop-filter: blur(10px);
+    z-index: 99;
+}
+
+.depth02_bg {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 0;
+    top: 100px;
+    left: 0;
+    z-index: 99;
+    background-color: #fff;
+
+}
+
+.depth02_bg.scrolled {
+    background-color: transparent;
+    background: linear-gradient(hsla(0, 0%, 63%, 0.4), hsla(0, 0%, 40%, 0.4));
+}
+
+.header .inner .pc_nav .gnb>li:hover~li .depth02,
+.header .inner .pc_nav .gnb>li:hover .depth02,
+.header .inner .pc_nav .gnb>li:hover~li~li .depth02,
+.header .inner .pc_nav .gnb>li:hover~.depth02_bg,
+/* 추가 */
+.header .inner .pc_nav .gnb>li:hover+.depth02_bg,
+/* 추가 */
+.header .inner .pc_nav .gnb>li:hover .depth02_bg
+
+/* 추가 */
+    {
+    display: block;
+    height: 320px;
+}
+
+/* main_visual */
+.main_visual {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+}
+
+.main_visual video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.main_visual p {
+    position: absolute;
+    letter-spacing: calc(-0.05 * 1.5rem);
+    font-size: 1.5rem;
+    z-index: 9;
+}
+
+.main_visual p:first-of-type {
+
+    top: 12.96vh;
+    left: 3.125vw;
+    font-family: "Bricolage Grotesque-SemiBold";
+    color: #000;
+    font-weight: 500;
+
+
+}
+
+.main_visual p:nth-of-type(2) {
+    bottom: 29.9vh;
+    right: 3.125vw;
+    font-family: "Pretendard-SemiBold";
+    color: #999;
+}
+
+.main_visual p:nth-of-type(3) {
+    bottom: 28%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    font-family: "Bricolage Grotesque-Bold";
+    color: #fff;
+    font-weight: 500;
+
+}
+
+.main_visual .main-ti {
+    position: absolute;
+    width: 98vw;
+    bottom: 4%;
+    left: 1%;
+    z-index: 9;
+}
+
+/* section01 */
+.section01 {
+    width: 100%;
+    height: 100vh;
+    background-image: url('../img/intro_bg.png');
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.section01 h3 {
+    color: #fff;
+    font-size: 3.75rem;
+    font-weight: 700;
+    font-family: "Pretendard-Bold";
+    line-height: 200%;
+    text-align: center;
+}
+
+.section01 h3 span {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 1.5rem;
+}
+
+.section01 h3 img {
+    display: block;
+    height: auto;
+    width: 100%;
+}
+
+.section01 h3 .mo {
+    display: none;
+}
+
+.section01 a {
+    display: inline-block;
+    margin-top: 4rem;
+    padding: 20px 40px;
+    border: 1px solid #fff;
+    border-radius: 80px;
+    font-size: 4.375rem;
+    color: #fff;
+    font-family: "Bricolage Grotesque", sans-serif;
+    transition: 0.3s;
+}
+
+.section01 a:hover {
+    color: #000;
+    background-color: #fff;
+}
+
+/* section02 */
+.section02 {
+    background-color: #000;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.section02 .scrollSwiper {
+    width: 100%;
+    max-height: 100%;
+    height: auto;
+    color: #fff;
+    position: absolute;
+
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.scrollSwiper .swiper-wrapper {
+    display: flex;
+
+
+}
+
+.scrollSwiper .swiper-slide .text:nth-of-type(1) {
+    position: absolute;
+    width: 100%;
+    top: 2.41vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1.71vh;
+    z-index: 5;
+}
+
+.scrollSwiper .swiper-slide .text:nth-of-type(2) {
+    position: absolute;
+    width: 100%;
+    bottom: 6vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+}
+
+.scrollSwiper .swiper-slide .text h2 {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: 5.625rem;
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.7));
+    letter-spacing: calc(-0.01 * 5.625rem);
+    font-weight: 600;
+
+}
+
+.scrollSwiper .swiper-slide .text p {
+    font-size: 1.25rem;
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.7));
+    letter-spacing: calc(-0.05 * 1.25rem);
+    font-family: "Pretendard-SemiBold";
+    text-align: center;
+}
+
+.scrollSwiper .swiper-slide img {
+    width: 100%;
+    border-radius: 30px;
+}
+
+.scrollSwiper .swiper-slide {
+    max-width: 62.08vw;
+    width: calc(100% - 20vw);
+    height: 100%;
+    /* background-color: lightblue; */
+    padding-top: 5rem;
+}
+
+/* section03 */
+.section03 {
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    overflow: hidden;
+}
+
+.section03 .inner {
+    max-width: 1920px;
+    width: calc(100% - 120px);
+    margin: 0 auto;
+}
+
+.inner.list_wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.section03 .inner .title_wrap {
+    padding: 12.5rem 0 7.5rem;
+    text-align: center;
+}
+
+.section03 .inner .title_wrap h3 {
+    font-size: 5.625rem;
+    padding-bottom: 5rem;
+    font-family: "Bricolage Grotesque-Bold";
+    font-weight: 700;
+}
+
+.section03 .inner .title_wrap .button_wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.section03 .inner .title_wrap .button_wrap button {
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 40px;
+    background-color: transparent;
+    font-size: 1.875rem;
+    cursor: pointer;
+    transition: 0.3s;
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-weight: normal;
+}
+
+/* 버튼 호버 */
+.section03 .button_wrap button.on {
+    background-color: #fff !important;
+    color: #000 !important;
+}
+
+.section03 .inner .list {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 3vw;
+}
+
+
+.section03 .inner .list .item {
+    background-image:
+        linear-gradient(transparent, #000),
+        url('../img/bifc.jpg');
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+
+    width: 48.5%;
+    max-height: 590px;
+    min-height: 264px;
+    height: 32vw;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: end;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.section03 .inner .list .item .item_title {
+    font-size: 2.5rem;
+    font-family: "Pretendard-Bold";
+    letter-spacing: calc(-0.05 * 3rem);
+    position: relative;
+    z-index: 2;
+    bottom: 0;
+}
+
+.section03 .inner .list .item .tag {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    gap: 12px;
+    z-index: 3;
+}
+
+.section03 .inner .list .item .tag span {
+    z-index: 2;
+    font-size: 1.125rem;
+    letter-spacing: calc(-0.05 * 1.25rem);
+    padding: 12px 20px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+    word-break: keep-all;
+}
+
+/* 섹션 03  See All Project button*/
+.section03 .inner .goto {
+    margin-top: 12rem;
+    display: inline-block;
+    padding: 20px 40px;
+    border-radius: 80px;
+    border: 1px solid #fff;
+    font-size: 4.375rem;
+    font-family: "Bricolage Grotesque", sans-serif;
+
+}
+
+.section03 .inner .goto:hover {
+    color: #333;
+    background-color: #fff;
+    transition: 0.3s;
+}
+
+
+/* section04 */
+.section04 {
+    background: url('../img/main_solution_bg.png') center center no-repeat;
+    background-size: cover;
+    padding-top: 12rem;
+    padding-bottom: 18rem;
+    background-color: #000;
+    color: #fff;
+    width: 100%;
+
+    overflow: hidden;
+}
+
+.section04 .inner {
+    width: 100%;
+    height: 100%;
+
+}
+
+.section04 .inner .title {
+    text-align: center;
+    padding-bottom: 5.5rem;
+    font-size: 2rem;
+    font-family: "Bricolage Grotesque", sans-serif;
+}
+
+.section04 .inner .title p {}
+
+.section04 .inner .title h3 {
+    font-size: 5.625rem;
+    font-weight: 700;
+}
+
+.solutionSwiper {
+    width: 100%;
+    overflow: hidden;
+
+    overflow: hidden;
+
+}
+
+.solutionSwiper .swiper-wrapper {}
+
+.solutionSwiper .swiper-wrapper .swiper-slide {
+    width: 635px;
+    z-index: 1;
+    padding: 0 5%;
+    transform: translate3d(-50px, 0px, -150px) rotateX(0deg) rotateY(-30deg) scale(1);
+
+}
+
+.solutionSwiper .swiper-wrapper .swiper-slide a {}
+
+.solutionSwiper .swiper-wrapper .swiper-slide a img {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+}
+
+/* section05 */
+.section05 {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    background-color: #000;
+}
+
+.section05 .word-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.section05 .word-container .word {
+    width: 100%;
+    height: 50vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+
+    max-width: 760px;
+
+    position: relative;
+
+
+}
+
+.section05 .word-container .word video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    z-index: 0;
+
+}
+
+.section05 .word-container .word h4 {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: 7.5rem;
+    color: #fff;
+    font-weight: 600;
+    z-index: 1;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+
+/* section06 */
+.section06 {
+    width: 100%;
+    background: linear-gradient(to bottom, #000, #fff);
+
+    padding: 20rem 0;
+
+
+}
+
+.section06 .inner {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.section06 .inner .text {
+    color: #fff;
+    margin-bottom: 6.25rem;
+    text-align: center;
+}
+
+.section06 .inner .text h1 {
+    font-size: 3.5rem;
+    letter-spacing: calc(-0.05 * 3.5rem);
+    font-family: "Pretendard-Bold";
+    line-height: 67.2px;
+    margin-bottom: 3.875rem;
+}
+
+.section06 .inner .text h2 {
+    font-family: "Pretendard-Regular";
+    font-size: 1.125rem;
+    letter-spacing: calc(-0.05 * 1.125rem);
+    line-height: 150%;
+
+}
+
+.section06 .inner .wrap {
+    max-width: 990px;
+}
+
+.section06 .inner .wrap .image {
+    width: 100%;
+    margin-top: 0;
+    position: sticky;
+    top: 10vh;
+}
+
+.section06 .inner .wrap .image img {
+    width: 100%;
+}
+
+
+/* section07 */
+.section07 {
+    width: 100%;
+    padding: 20rem 0 12.5rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.section07 h3 {
+    font-size: 3.5rem;
+    margin-bottom: 6.25rem;
+    font-family: "Pretendard-Bold";
+}
+
+.section07 .rolling {
+    width: 100%;
+    overflow: hidden;
+}
+
+.section07 .rolling .rolling-banner {
+    width: 100%;
+    margin: 2rem 0;
+    display: flex;
+    align-items: center;
+}
+
+.rolling-track {
+    display: flex;
+}
+
+.rolling-track.left {
+    animation: roll-left 35s linear infinite;
+}
+
+.rolling-track.right {
+    animation: roll-right 35s linear infinite;
+}
+
+.track-group {
+    display: flex;
+}
+
+.track-group img {
+    height: 80px;
+    margin: 0 0.5rem;
+    object-fit: contain;
+}
+
+/* 무한 롤링 */
+@keyframes roll-right {
+    0% {
+        transform: translateX(-50%);
+    }
+
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+@keyframes roll-left {
+    0% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* section08 */
+.section08 {
+    width: 100%;
+    background-color: #1500ff;
+    padding: 10rem 0 12rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 100px;
+}
+
+.section08 img:nth-of-type(1) {
+    width: 800px;
+}
+
+.section08 img:nth-of-type(2) {
+    width: 98%;
+}
+
+.section08 a {
+    color: #fff;
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: 4.375rem;
+    padding: 20px 40px;
+    border: 1px solid #fff;
+    border-radius: 80px;
+    transition: 0.3s;
+}
+
+.section08 a:hover {
+    background-color: #fff;
+    color: #1500ff;
+}
+
+/* 🔴footer🔴 */
+
+.footer {
+    width: 100%;
+    overflow: hidden;
+}
+
+.footer .footer_container {
+    width: calc(100% - 120px);
+    margin: 0 auto;
+    padding: 60px 0;
+    font-family: "Pretendard-Medium";
+}
+
+.footer .footer_container .footer_top {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    /* 화살표 상단 배치 */
+}
+
+.footer .footer_container .footer_top .logo {}
+
+.footer .footer_container .footer_top .logo a {}
+
+.footer .footer_container .footer_top .logo a img {}
+
+.footer .footer_container .footer_top .text {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    line-height: 150%;
+
+    font-size: 1.25rem;
+    letter-spacing: (-0.05 * 1.25rem);
+}
+
+.footer .footer_container .footer_bottom {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 10rem;
+}
+
+.footer .footer_container .footer_bottom p {
+    font-size: 15px;
+}
+
+.footer .footer_container .footer_bottom img {
+    width: 10%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* 모바일 (1열) */
+@media (max-width: 480px) {
+
+    .header {
+        position: relative;
+        height: 80px;
+    }
+
+    .header .inner {
+        width: calc(100% - 30px);
+    }
+
+    .header .inner .nav {
+        display: none;
+        overflow: hidden;
+    }
+
+    .pc_bg {
+        display: none;
+    }
+
+    .menu_btn img {
+        width: 80%;
+    }
+
+    .header .inner .logo img {
+        width: 55%;
+    }
+
+    .main_visual p {
+        font-size: 1rem;
+    }
+
+    .main_visual p:nth-of-type(2) {
+        text-align: left;
+    }
+
+    .main_visual p:nth-of-type(3) {
+        bottom: 14%;
+        color: #000;
+        font-size: 21px;
+    }
+
+    .section01 {}
+
+    .section01 h3 {
+        font-size: 1.5rem;
+    }
+
+    .section01 h3 .mo {
+        display: block;
+    }
+
+    .section01 h3 span {
+        width: 30%;
+    }
+
+    .section01 a {
+        font-size: 28px;
+    }
+
+    .section02 .scrollSwiper .swiper-slide {
+        max-width: 100vw;
+        width: calc(100% - 20vw);
+        height: 500px;
+    }
+
+    .section02 .scrollSwiper .swiper-slide .text:nth-of-type(1){
+        top:6.41vh
+    }
+    .section02 .scrollSwiper .swiper-slide .text p{
+        font-size: 18px;
+        line-height: 150%;
+        padding: 0 20px;
+    }
+    .section02 .scrollSwiper .swiper-slide img {
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .section02 .scrollSwiper .swiper-slide .text h2 {
+        font-size: 24px;
+    }
+
+    .section03 .inner {
+        width: calc(100% - 30px);
+        margin: 0 auto;
+    }
+
+    .section03 .inner .list .item {
+        flex: 1 1 100%;
+        padding: 20px;
+    }
+    .section03 .inner .title_wrap h3 {
+        font-size: 3.75rem;
+    }
+    .section03 .inner .title_wrap .button_wrap button {
+        font-size: 1.25rem;
+    }
+    .section03 .inner .list .item .item_title {
+        font-size: 1.375rem;
+    }
+
+    .section03 .inner .list .item .tag span {
+        font-size: 0.875rem;
+        padding: 5px 10px;
+    }
+
+    .section03 .inner .goto {
+        margin-top: 12rem;
+        display: inline-block;
+        padding: 20px 40px;
+        border-radius: 80px;
+        border: 1px solid #fff;
+        font-size: 1.75rem;
+    }
+    .section04 .inner .title p {
+        font-size: 1.31rem;
+    }
+    .section04 .inner .title h3 {
+        font-size: 3.75rem;
+    }
+    .section04 .inner .title {
+        padding-bottom: 3.625rem;
+    }
+    .section04 .inner .solutionSwiper {
+      padding-bottom: 100px;
+    }
+    .section04 .inner .solutionSwiper .swiper-wrapper .swiper-slide{
+        width: 100%;
+    }
+}

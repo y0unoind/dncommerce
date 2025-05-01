@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>디엔커머스</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="lib/swiper-bundle.css">
+
+    <script src="lib/swiper-bundle.min.js"></script>
+    <script src="lib/jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.gnb').hover(
+                function () {
+                    // 마우스 들어왔을 때
+                    $('.depth02').stop().slideDown(200);
+                    $('.depth02_bg').stop().css('display', 'block').animate({ height: "320px" }, 200);
+                },
+                function () {
+                    // 마우스 나갔을 때
+                    $('.depth02').stop().slideUp(200);
+                    $('.depth02_bg').stop().animate({ height: "0px" }, 200, function () {
+                        $(this).css('display', 'none');
+                    });
+                }
+            );
+        });
+
+        /* 스크롤시 헤더 스타일 변경 */
+        $(window).on("scroll", function () {
+            if ($(window).scrollTop() > 0) {
+                $(".header").addClass("scrolled");
+                $(".header .logo img").attr("src", "img/logo_w.svg");
+                $(".menu_btn img").attr("src", "img/header_plus_w.svg");
+                $(".depth02_bg").addClass("scrolled");
+            } else {
+                $(".header").removeClass("scrolled");
+                $(".header .logo img").attr("src", "img/logo_b.svg");
+                $(".menu_btn img").attr("src", "img/header_plus_b.svg");
+                $(".depth02_bg").removeClass("scrolled");
+            }
+        });
+
+
+
+
+
+        $(document).ready(function () {
+            $('.menu_btn').click(function () {
+                $(this).toggleClass('on');
+
+                if ($(this).hasClass('on')) {
+                    $(this).find('img').attr('src', "img/header_plus_w.svg"); // on 붙었을 때 이미지
+                    $('.mobile_nav').addClass('on'); // mobile_nav에 on 추가
+                } else {
+                    $(this).find('img').attr('src', "img/header_plus_b.svg"); // on 없을 때 이미지
+                    $('.mobile_nav').removeClass('on'); // mobile_nav에서 on 제거
+                }
+            });
+        });
+
+        $(document).ready(function () {
+            var swiper = new Swiper(".scrollSwiper", {
+
+                slidesPerView: 'auto',
+                centeredSlides: true,
+                spaceBetween: 30,
+                mousewheel: true,
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+            });
+        });
+
+        $(document).ready(function () {
+            // 모든 button 요소에 이벤트 설정
+            $('button').on({
+                // 마우스 호버 시 on 클래스 추가
+                mouseenter: function () {
+                    $(this).addClass('on');
+                },
+                // 마우스 이탈 시 on 클래스 제거 (단, clicked 상태가 아닐 때만)
+                mouseleave: function () {
+                    if (!$(this).hasClass('clicked')) {
+                        $(this).removeClass('on');
+                    }
+                },
+                // 클릭 시 처리
+                click: function () {
+                    // 1. 모든 버튼에서 on, clicked 클래스 제거 (초기화)
+                    $('button').removeClass('on clicked');
+
+                    // 2. 현재 클릭한 버튼만 on + clicked 클래스 추가
+                    $(this).addClass('on clicked');
+                }
+            });
+
+            $(document).ready(function () {
+                var swiper = new Swiper('.solutionSwiper', {
+                    effect: "coverflow",
+                    grabCursor: true,
+                    centeredSlides: true,
+                    slidesPerView: 3,
+                    spaceBetween: 0,
+                    coverflowEffect: {
+                        rotate: 30,      // 양 옆 슬라이드 회전 각도
+                        stretch: 0,      // 슬라이드 사이 간격을 당겨줌
+                        depth: 150,      // z축 깊이
+                        modifier: 1,     // 효과 강도
+                        slideShadows: false,
+                    },
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true
+                    }
+                });
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+    <header class="header">
+        <div class="inner">
+            <h2 class="logo">
+                <a href="#"><img src="img/logo_b.svg" alt=""></a>
+            </h2> <!-- logo -->
+
+            <nav class="nav pc_nav">
+                <ul class="gnb">
+
+                    <li><a href="#" class="depth01">About</a>
+
+                        <ul class="depth02">
+                            <li><a href="#">dncommerce</a></li>
+                            <li><a href="#">history</a></li>
+                            <li><a href="#">news</a></li>
+                        </ul> <!-- depth02 -->
+                    </li> <!-- depth01 -->
+
+                    <li><a href="#" class="depth01">Service</a>
+
+                        <ul class="depth02">
+                        </ul> <!-- depth02 -->
+                    </li> <!-- depth01 -->
+
+                    <li><a href="#" class="depth01">Project</a>
+
+                        <ul class="depth02">
+                            <li><a href="#">software</a></li>
+                            <li><a href="#">marketing</a></li>
+                            <li><a href="#">website</a></li>
+                            <li><a href="#">con&edu</a></li>
+                        </ul> <!-- depth02 -->
+                    </li> <!-- depth01 -->
+
+                    <li><a href="#" class="depth01">Solution</a>
+
+                        <ul class="depth02">
+                            <li><a href="#">DN METRICS</a></li>
+                            <li><a href="#">Workin</a></li>
+                            <li><a href="#">VISITOR</a></li>
+                            <li><a href="#">LIVECON</a></li>
+                        </ul> <!-- depth02 -->
+                    </li> <!-- depth01 -->
+
+                    <li><a href="#" class="depth01">Contact</a>
+
+                        <ul class="depth02">
+                        </ul> <!-- depth02 -->
+                    </li> <!-- depth01 -->
+
+                </ul> <!-- gnb -->
+            </nav> <!-- nav -->
+
+            <span class="menu_btn">
+                <img src="img/header_plus_b.svg" alt="">
+            </span> <!-- menu_btn -->
+
+            <nav class="mobile mobile_nav">
+                <ul class="gnb">
+                    <li>
+                        <a href="#" class="depth-01">About</a>
+                        <ul class="depth-02">
+                            <li><a href="#">dncommerce</a></li>
+                            <li><a href="#">histroy</a></li>
+                            <li><a href="#">news</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="depth-01">Service</a>
+                        <ul class="depth-02">
+                            <li><a href="#">service</a></li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="depth-01">Project</a>
+                        <ul class="depth-02">
+                            <li><a href="#">software</a></li>
+                            <li><a href="#">marketing</a></li>
+                            <li><a href="#">website</a></li>
+                            <li><a href="#">con&edu</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="depth-01">Solution</a>
+                        <ul class="depth-02">
+                            <li><a href="#">DN METRICS</a></li>
+                            <li><a href="#">Workin</a></li>
+                            <li><a href="#">VISITOR</a></li>
+                            <li><a href="#">LIVECON</a></li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="depth-01">Contact</a>
+                        <ul class="depth-02">
+                            <li><a href="#">contact</a></li>
+
+                        </ul>
+                    </li>
+                </ul> <!-- gnb -->
+            </nav> <!-- mobile_nav -->
+
+        </div> <!-- inner -->
+    </header> <!-- header -->
+
+    <div class="pc pc_bg">
+    </div> <!-- pc_bg -->
+    <div class="pc depth02_bg">
+
+    </div> <!-- depth02_bg -->
+    <section class="main_visual start">
+        <video src="img/mainvisual.webm" autoplay muted loop></video>
+
+        <p>
+            Turn Ideas into Reality,<br />
+            Turn Possibilities into Success.<br />
+            Endless Opportunities with dncommerce.<br />
+        </p>
+        <p>
+            아이디어를 현실로,<br>
+
+            가능성을 성공으로 이끕니다.<br>
+
+            무한한 가능성, 디앤커머스와 함께
+        </p>
+        <p>we are</p>
+        <img src="img/main_mainvisual_text.png" alt="" class="main-ti">
+    </section> <!-- main_visual -->
+
+    <section class="section01">
+        <h3>
+            디앤커머스는 소프트웨어 개발과 <br class="mo"> 온라인 마케팅 전문 <br>
+            <span><img src="img/Rectangle1.png" alt=""></span> 디지털 솔루션 <br class="mo"> 기업입니다. 디지털 혁신과 <br>
+            창의성을 기반으로 <span><img src="img/Rectangle2.png" alt=""></span> <br class="mo"> 비즈니스의 성장과 <br>
+            최적의 사용자 경험을 제공합니다.
+
+        </h3>
+        <a href="#">about us</a>
+    </section> <!-- section01 -->
+
+    <section class="section02">
+
+        <!-- Swiper -->
+        <div class="swiper scrollSwiper">
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide">
+                    <div class="text">
+                        <h2>Software Development</h2>
+                        <p>소프트웨어 개발</p>
+                    </div>
+                    <div class="text">
+                        <p>플랫폼, 어플리케이션, 웹, 시스템, CRM, 연구과제, 정부지원사업, 홈페이지, 쇼핑몰 전문 개발</p>
+                    </div>
+                    <img src="img/s32.png" alt="">
+                </div> <!-- swiper-slide -->
+                <div class="swiper-slide">
+                    <div class="text">
+                        <h2>Online Marketing</h2>
+                        <p>온라인 마케팅</p>
+                    </div>
+                    <div class="text">
+                        <p>대형 포털 마케팅, 페이스북/인스타그램 마케팅, 언론보도, 프랜차이즈 마케팅</p>
+                    </div>
+                    <img src="img/s31.png" alt="">
+                </div> <!-- swiper-slide -->
+                <div class="swiper-slide">
+                    <div class="text">
+                        <h2>Corporate Marketing</h2>
+                        <p>기업총괄 마케팅</p>
+                    </div>
+                    <div class="text">
+                        <p>프랜차이즈 가맹 마케팅, 판매/구매전환 전략 총 기획, 시장 진입 전략 수립</p>
+                    </div>
+                    <img src="img/s35.png" alt="">
+                </div> <!-- swiper-slide -->
+                <div class="swiper-slide">
+                    <div class="text">
+                        <h2>IT Con&Edu</h2>
+                        <p>IT컨설팅/교육</p>
+                    </div>
+                    <div class="text">
+                        <p>소프트웨어 개발 컨설팅, 직장인 IT실무 교육, 중고생 IT기초 교육, 대학생 IT실무 교육</p>
+                    </div>
+                    <img src="img/s33.png" alt="">
+                </div> <!-- swiper-slide -->
+                <div class="swiper-slide">
+                    <div class="text">
+                        <h2>Marketing Con&Edu</h2>
+                        <p>마케팅 컨설팅/교육</p>
+                    </div>
+                    <div class="text">
+                        <p>사업화 전략 수립, 판매채널 가이드, 마케팅 관계자 교육 등</p>
+                    </div>
+                    <img src="img/s34.png" alt="">
+                </div> <!-- swiper-slide -->
+
+            </div> <!-- swiper-wrapper -->
+            <!-- <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div> -->
+        </div> <!-- scrollSwiper -->
+    </section> <!-- section02 -->
+
+    <section class="section03">
+        <div class="inner list_wrap">
+            <div class="title_wrap">
+
+                <h3>Project</h3>
+                <div class="button_wrap">
+                    <button class="all on">ALL</button>
+                    <button class="software">Software</button>
+                    <button class="marketing">Marketing</button>
+                    <button class="website">Website</button>
+                    <button class="consulting">Consulting/Education</button>
+                </div> <!-- button_wrap -->
+            </div> <!-- title_wrap -->
+
+            <div class="list">
+
+                <div class="item software">
+                    <div class="item_title">
+                        <h5>코미디페스티벌</h5>
+                        <h5>표정 인식AI 기반 요금정산 태블릿 앱 고도화 개발</h5>
+                    </div> <!-- item_title -->
+
+                    <div class="tag">
+                        <span>태블릿 안드로이드 앱 개발</span>
+                    </div> <!-- tag -->
+                </div> <!-- item -->
+
+                <div class="item software">
+                    <div class="item_title">
+                        <h5>코미디페스티벌</h5>
+                        <h5>표정 인식AI 기반 요금정산 태블릿 앱 고도화 개발</h5>
+                    </div> <!-- item_title -->
+
+                    <div class="tag">
+                        <span>태블릿 안드로이드 앱 개발</span>
+                    </div> <!-- tag -->
+                </div> <!-- item -->
+
+                <div class="item software">
+                    <div class="item_title">
+                        <h5>코미디페스티벌</h5>
+                        <h5>표정 인식AI 기반 요금정산 태블릿 앱 고도화 개발</h5>
+                    </div> <!-- item_title -->
+
+                    <div class="tag">
+                        <span>태블릿 안드로이드 앱 개발</span>
+                    </div> <!-- tag -->
+                </div> <!-- item -->
+
+                <div class="item software">
+                    <div class="item_title">
+                        <h5>코미디페스티벌</h5>
+                        <h5>표정 인식AI 기반 요금정산 태블릿 앱 고도화 개발</h5>
+                    </div> <!-- item_title -->
+
+                    <div class="tag">
+                        <span>태블릿 안드로이드 앱 개발</span>
+                    </div> <!-- tag -->
+                </div> <!-- item -->
+
+                <div class="item software">
+                    <div class="item_title">
+                        <h5>코미디페스티벌</h5>
+                        <h5>표정 인식AI 기반 요금정산 태블릿 앱 고도화 개발</h5>
+                    </div> <!-- item_title -->
+
+                    <div class="tag">
+                        <span>태블릿 안드로이드 앱 개발</span>
+                    </div> <!-- tag -->
+                </div> <!-- item -->
+
+                <div class="item software">
+                    <div class="item_title">
+                        <h5>코미디페스티벌</h5>
+                        <h5>표정 인식AI 기반 요금정산 태블릿 앱 고도화 개발</h5>
+                    </div> <!-- item_title -->
+
+                    <div class="tag">
+                        <span>태블릿 안드로이드 앱 개발</span>
+                    </div> <!-- tag -->
+                </div> <!-- item -->
+
+
+            </div> <!-- list -->
+
+            <a href="#" class="goto">See All Project</a>
+
+        </div> <!-- inner -->
+    </section> <!-- section03 -->
+
+    <section class="section04">
+        <div class="inner">
+
+            <div class="title">
+                <p>we have</p>
+                <h3>Solution</h3>
+            </div> <!-- title -->
+
+            <!-- Swiper -->
+            <div class="swiper solutionSwiper">
+                <div class="swiper-wrapper">
+
+
+
+                    <div class="swiper-slide">
+                        <a href="#">
+                            <img src="img/main_solution1.png" alt="">
+                        </a>
+                    </div> <!-- swiper-slide -->
+
+
+                    <div class="swiper-slide">
+                        <a href="#">
+                            <img src="img/main_solution2.png" alt="">
+                        </a>
+                    </div> <!-- swiper-slide -->
+
+                    <div class="swiper-slide">
+                        <a href="#">
+                            <img src="img/main_solution3.png" alt="">
+                        </a>
+                    </div> <!-- swiper-slide -->
+
+                    <div class="swiper-slide">
+                        <a href="#">
+                            <img src="img/main_solution4.png" alt="">
+                        </a>
+                    </div> <!-- swiper-slide -->
+
+
+                </div> <!-- swiper-wrapper -->
+                <!-- <div class="swiper-pagination"></div> -->
+            </div>
+
+        </div> <!-- inner -->
+    </section> <!-- section04 -->
+
+    <section class="section05">
+        <div class="word-container">
+            <!-- Develop -->
+            <div class="word">
+                <video src="img/dncommerce co krimage02 mp4.mp4" autoplay loop muted></video>
+                <h4>Develop</h4>
+            </div><!-- word -->
+            <!-- Digital -->
+            <div class="word">
+                <video src="img/dncommerce co krimage04 mp4.mp4" autoplay loop muted></video>
+                <h4>Digital</h4>
+            </div><!-- word -->
+            <!-- Data -->
+            <div class="word">
+                <video src="img/dncommerce co krimage02 mp4.mp4" autoplay loop muted></video>
+                <h4>Data</h4>
+            </div><!-- word -->
+            <!-- Design -->
+            <div class="word">
+                <video src="img/dncommerce co krimage02 mp4.mp4" autoplay loop muted></video>
+                <h4>Design</h4>
+            </div><!-- word -->
+            <!-- Dynamic -->
+            <div class="word">
+                <video src="img/dncommerce co krimage02 mp4.mp4" autoplay loop muted></video>
+                <h4>Dynamic</h4>
+            </div><!-- word -->
+            <!-- And -->
+            <div class="word">
+                <video src="img/dncommerce co krimage06 mp4.mp4" autoplay loop muted></video>
+                <h4>And</h4>
+            </div><!-- word -->
+
+
+        </div> <!-- word-container -->
+    </section> <!-- section05 -->
+
+    <section class="section06">
+        <div class="inner">
+            <div class="text">
+                <h1>더 큰 가능성을 향한 도전</h1>
+                <h2>디앤커머스는 또 다른 도전을 시작합니다.<br>
+                    단순한 기술 공급자를 넘어, 고객 비즈니스를 혁신으로 연결하는 플랫폼으로 거듭납니다.<br>
+                    우리가 만드는 모든 것은 단순히 보기 좋은 것이 아닌, 문제를 해결하고 성공을 실현하기 위해 존재합니다.
+                </h2>
+            </div> <!-- text -->
+            <div class="wrap">
+                <div class="image">
+                    <img src="img/main_sc6_3.png" alt="">
+                </div> <!-- image -->
+                <div class="image">
+                    <img src="img/main_sc6_7.png" alt="">
+                </div> <!-- image -->
+                <div class="image">
+                    <img src="img/main_sc6_2.png" alt="">
+                </div> <!-- image -->
+                <div class="image">
+                    <img src="img/main_sc6_1.png" alt="">
+                </div> <!-- image -->
+                <div class="image">
+                    <img src="img/main_sc6_11.png" alt="">
+                </div> <!-- image -->
+                <div class="image">
+                    <img src="img/main_sc6_12.png" alt="">
+                </div> <!-- image -->
+                <div class="image">
+                    <img src="img/main_sc6_4.png" alt="">
+                </div> <!-- image -->
+
+            </div> <!-- wrap -->
+        </div> <!-- inner -->
+    </section> <!-- section06 -->
+
+
+    <section class="section07">
+        <h3>무한한 가능성, 디앤커머스와 함께</h3>
+        <div class="rolling">
+            <!-- 반복되는 롤링 배너들 -->
+            <div class="rolling-banner">
+                <div class="rolling-track left">
+                    <div class="track-group">
+                        <img src="/img/Frame 1.png" alt="배너1" />
+                        <img src="/img/Frame 2.png" alt="배너2" />
+                        <img src="/img/Frame 3.png" alt="배너3" />
+                        <img src="/img/Frame 4.png" alt="배너4" />
+                        <img src="/img/Frame 5.png" alt="배너5" />
+                        <img src="/img/Frame 6.png" alt="배너6" />
+                        <img src="/img/Frame 7.png" alt="배너7" />
+                        <img src="/img/Frame 8.png" alt="배너8" />
+                        <img src="/img/Frame 9.png" alt="배너9" />
+                        <img src="/img/Frame 10.png" alt="배너10" />
+                    </div>
+                    <div class="track-group">
+                        <img src="/img/Frame 1.png" alt="배너1" />
+                        <img src="/img/Frame 2.png" alt="배너2" />
+                        <img src="/img/Frame 3.png" alt="배너3" />
+                        <img src="/img/Frame 4.png" alt="배너4" />
+                        <img src="/img/Frame 5.png" alt="배너5" />
+                        <img src="/img/Frame 6.png" alt="배너6" />
+                        <img src="/img/Frame 7.png" alt="배너7" />
+                        <img src="/img/Frame 8.png" alt="배너8" />
+                        <img src="/img/Frame 9.png" alt="배너9" />
+                        <img src="/img/Frame 10.png" alt="배너10" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="rolling-banner">
+                <div class="rolling-track right">
+                    <div class="track-group">
+                        <img src="/img/Frame 11.png" alt="배너11" />
+                        <img src="/img/Frame 12.png" alt="배너12" />
+                        <img src="/img/Frame 13.png" alt="배너13" />
+                        <img src="/img/Frame 14.png" alt="배너14" />
+                        <img src="/img/Frame 15.png" alt="배너15" />
+                        <img src="/img/Frame 16.png" alt="배너16" />
+                        <img src="/img/Frame 17.png" alt="배너17" />
+                        <img src="/img/Frame 18.png" alt="배너18" />
+                        <img src="/img/Frame 19.png" alt="배너19" />
+                        <img src="/img/Frame 20.png" alt="배너20" />
+                    </div>
+                    <div class="track-group">
+                        <img src="/img/Frame 11.png" alt="배너11" />
+                        <img src="/img/Frame 12.png" alt="배너12" />
+                        <img src="/img/Frame 13.png" alt="배너13" />
+                        <img src="/img/Frame 14.png" alt="배너14" />
+                        <img src="/img/Frame 15.png" alt="배너15" />
+                        <img src="/img/Frame 16.png" alt="배너16" />
+                        <img src="/img/Frame 17.png" alt="배너17" />
+                        <img src="/img/Frame 18.png" alt="배너18" />
+                        <img src="/img/Frame 19.png" alt="배너19" />
+                        <img src="/img/Frame 20.png" alt="배너20" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="rolling-banner">
+                <div class="rolling-track left">
+                    <div class="track-group">
+                        <img src="/img/Frame 21.png" alt="배너21" />
+                        <img src="/img/Frame 22.png" alt="배너22" />
+                        <img src="/img/Frame 23.png" alt="배너23" />
+                        <img src="/img/Frame 24.png" alt="배너24" />
+                        <img src="/img/Frame 25.png" alt="배너25" />
+                        <img src="/img/Frame 26.png" alt="배너26" />
+                        <img src="/img/Frame 27.png" alt="배너27" />
+                        <img src="/img/Frame 28.png" alt="배너28" />
+                        <img src="/img/Frame 29.png" alt="배너29" />
+                        <img src="/img/Frame 30.png" alt="배너30" />
+                    </div>
+                    <div class="track-group">
+                        <img src="/img/Frame 21.png" alt="배너21" />
+                        <img src="/img/Frame 22.png" alt="배너22" />
+                        <img src="/img/Frame 23.png" alt="배너23" />
+                        <img src="/img/Frame 24.png" alt="배너24" />
+                        <img src="/img/Frame 25.png" alt="배너25" />
+                        <img src="/img/Frame 26.png" alt="배너26" />
+                        <img src="/img/Frame 27.png" alt="배너27" />
+                        <img src="/img/Frame 28.png" alt="배너28" />
+                        <img src="/img/Frame 29.png" alt="배너29" />
+                        <img src="/img/Frame 30.png" alt="배너30" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="rolling-banner">
+                <div class="rolling-track right">
+                    <div class="track-group">
+                        <img src="/img/Frame 31.png" alt="배너31" />
+                        <img src="/img/Frame 32.png" alt="배너32" />
+                        <img src="/img/Frame 33.png" alt="배너33" />
+                        <img src="/img/Frame 34.png" alt="배너34" />
+                        <img src="/img/Frame 35.png" alt="배너35" />
+                        <img src="/img/Frame 36.png" alt="배너36" />
+                        <img src="/img/Frame 37.png" alt="배너37" />
+                        <img src="/img/Frame 38.png" alt="배너38" />
+                        <img src="/img/Frame 39.png" alt="배너39" />
+                        <img src="/img/Frame 40.png" alt="배너40" />
+                    </div>
+                    <div class="track-group">
+                        <img src="/img/Frame 31.png" alt="배너31" />
+                        <img src="/img/Frame 32.png" alt="배너32" />
+                        <img src="/img/Frame 33.png" alt="배너33" />
+                        <img src="/img/Frame 34.png" alt="배너34" />
+                        <img src="/img/Frame 35.png" alt="배너35" />
+                        <img src="/img/Frame 36.png" alt="배너36" />
+                        <img src="/img/Frame 37.png" alt="배너37" />
+                        <img src="/img/Frame 38.png" alt="배너38" />
+                        <img src="/img/Frame 39.png" alt="배너39" />
+                        <img src="/img/Frame 40.png" alt="배너40" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> <!-- section07 -->
+
+    <section class="section08">
+        <img src="img/main_contact.svg" alt="">
+        <img src="img/main_mainvisual_text.png" alt="">
+        <a href="#">Contact Us</a>
+    </section> <!-- section08 -->
+
+    <footer class="footer">
+        <div class="footer_container">
+            <div class="footer_top">
+                <div class="logo">
+                    <a href="#">
+                        <img src="img/footerlogo.svg" alt="">
+                    </a>
+                </div> <!-- logo -->
+                <div class="text">
+
+                    <div class="text-top">
+                        <p class="footer_info text_mobile">
+                            부산광역시 사상구 주례로 19, 2F, 디앤커머스 <br>
+                            사업자번호 : 376-04-01199 <br>
+                            대표자 : 양욱제, 김성훈<br>
+                            TEL : 051-710-2959 <br>
+                            E-mail : dncommerce.corp@gmail.com
+                        </p>
+                    </div> <!-- text-top -->
+
+                    <div class="text-bottom1">
+                        <a href="#">
+                            <p>ABOUT</p>
+                        </a>
+                        <a href="#">
+                            <p>SERVICE</p>
+                        </a>
+                        <a href="#">
+                            <p>PROJECT</p>
+                        </a>
+                        <a href="#">
+                            <p>SOLUTION</p>
+                        </a>
+                        <a href="#">
+                            <p>CONTACT</p>
+                        </a>
+                    </div> <!-- text-bottom1 -->
+
+                    <div class="text-bottom2">
+                        <a href="#">
+                            <p>BLOG</p>
+                        </a>
+                        <a href="#">
+                            <p>KAKKOTALK</p>
+                        </a>
+                        <a href="#">
+                            <p>INSTAGRAM</p>
+                        </a>
+                        <a href="#">
+                            <p>CALL</p>
+                        </a>
+                    </div> <!-- text-bottom2 -->
+
+                </div> <!-- text -->
+                <img src="img/arrow_upward.svg" alt="">
+            </div> <!-- footer_top -->
+
+            <div class="footer_bottom">
+                <p>Copyright © 2018 - 2025 DNCOMMERCE All Right Reserved.</p>
+                <img src="img/gdweb.svg" alt="">
+            </div> <!-- footer_bottom -->
+
+        </div> <!-- footer_container -->
+    </footer> <!-- footer -->
+
+</body>
+
+</html>

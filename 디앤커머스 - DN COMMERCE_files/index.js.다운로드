@@ -1,0 +1,395 @@
+document.addEventListener('DOMContentLoaded', function () {
+  // 메인 비주얼 애니메이션 시작
+  setTimeout(() => {
+    document.querySelector('.main_visual').classList.add('start');
+  }, 1000);
+
+  // intro_section의 이미지 확대/축소 및 이동 애니메이션 적용
+  function applyImageScaleEffect() {
+    const introImage = document.querySelector('.intro_section img');
+    const introSection = document.querySelector('.intro_section');
+
+    if (!introImage || !introSection) return;
+
+    function updateTransform() {
+      const sectionRect = introSection.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      // 화면에 어느 정도 보이는지 계산
+      const visibleHeight = Math.min(
+        windowHeight,
+        Math.max(0, windowHeight - sectionRect.top)
+      );
+      const visibilityRatio = visibleHeight / windowHeight; // 0 ~ 1 값
+
+      // 화면 높이의 60%에 도달하면 scale(1), translateY(0)로 설정
+      if (visibilityRatio >= 0.8) {
+        introImage.style.transform = `scale(1) translateY(0)`;
+      } else {
+        // 비율이 낮아질수록 원래 값으로 돌아감
+        const scale = 0.5 + (visibilityRatio / 0.8) * 0.3;
+        const translateY = (1 - visibilityRatio / 0.8) * 110;
+        introImage.style.transform = `scale(${scale}) translateY(${translateY}%)`;
+      }
+    }
+
+    window.addEventListener('scroll', updateTransform);
+    updateTransform(); // 초기 실행
+  }
+
+  var swiper = new Swiper('.wheelSwiper', {
+    slidesPerView: 'auto',
+    spaceBetween: 10,
+    breakpoints: {
+      690: {
+        spaceBetween: 20,
+      },
+      1230: {
+        spaceBetween: 30,
+      },
+    },
+    centeredSlides: true,
+    autoplay: {
+      delay: 1000,
+      disableOnInteraction: false,
+    },
+    mousewheel: true,
+    loop: false,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    watchOverflow: true,
+    on: {
+      slideChange: function () {
+        setTimeout(() => {
+          swiper.params.touchReleaseOnEdges = false;
+          swiper.params.mousewheel.releaseOnEdges = false;
+          swiper.update();
+        });
+      },
+      reachEnd: function () {
+        setTimeout(() => {
+          swiper.params.touchReleaseOnEdges = true;
+          swiper.params.mousewheel.releaseOnEdges = true;
+          swiper.update();
+        }, 500);
+      },
+      reachBeginning: function () {
+        setTimeout(() => {
+          swiper.params.touchReleaseOnEdges = true;
+          swiper.params.mousewheel.releaseOnEdges = true;
+          swiper.update();
+        }, 500);
+      },
+    },
+  });
+
+  // 솔루션 슬라이드
+  var solutionSwiper = new Swiper('.solutionSwiper', {
+    slidesPerView: 1.2,
+    spaceBetween: 0,
+    breakpoints: {
+      690: {
+        slidesPerView: 2,
+      },
+      1230: {
+        slidesPerView: 3,
+      },
+    },
+    effect: 'coverflow',
+    coverflowEffect: {
+      rotate: 30,
+      stretch: 50,
+      depth: 150,
+      modifier: 1,
+      slideShadows: false,
+    },
+    centeredSlides: true,
+    autoplay: {
+      delay: 1000,
+      disableOnInteraction: false,
+    },
+    mousewheel: true,
+    loop: false,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    watchOverflow: true,
+    on: {
+      slideChange: function () {
+        setTimeout(() => {
+          solutionSwiper.params.touchReleaseOnEdges = false;
+          solutionSwiper.params.mousewheel.releaseOnEdges = false;
+          solutionSwiper.update();
+        });
+      },
+      reachEnd: function () {
+        setTimeout(() => {
+          solutionSwiper.params.touchReleaseOnEdges = true;
+          solutionSwiper.params.mousewheel.releaseOnEdges = true;
+          solutionSwiper.update();
+        }, 500);
+      },
+      reachBeginning: function () {
+        setTimeout(() => {
+          solutionSwiper.params.touchReleaseOnEdges = true;
+          solutionSwiper.params.mousewheel.releaseOnEdges = true;
+          solutionSwiper.update();
+        }, 500);
+      },
+    },
+  });
+
+  function enableDelayedScrollTransition() {
+    if (window.innerWidth > 1230) {
+      // PC에서만 기능 작동
+      [swiper, solutionSwiper].forEach((instance) => {
+        let transitionTimeout = null;
+
+        instance.on('reachEnd', () => {
+          clearTimeout(transitionTimeout);
+          transitionTimeout = setTimeout(() => {
+            window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+          }, 100); // 0.1초 대기 후 스크롤
+        });
+
+        instance.on('reachBeginning', () => {
+          clearTimeout(transitionTimeout);
+          transitionTimeout = setTimeout(() => {
+            window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+          }, 100); // 0.1초 대기 후 스크롤
+        });
+      });
+    }
+  }
+
+  // 화면 크기 변경 시 스크롤 기능 업데이트
+  function updateScrollTransition() {
+    if (window.innerWidth > 1230) {
+      enableDelayedScrollTransition();
+    } else {
+      // 모바일에서는 이벤트 제거하여 기능 비활성화
+      swiper.off('reachEnd');
+      swiper.off('reachBeginning');
+      solutionSwiper.off('reachEnd');
+      solutionSwiper.off('reachBeginning');
+    }
+  }
+
+  window.addEventListener('resize', updateScrollTransition);
+
+  // 화면 크기 변경 시 Swiper 설정 동적 업데이트
+  function updateSwiperSettings() {
+    if (window.innerWidth <= 1230) {
+      swiper.mousewheel.enable();
+      swiper.params.loop = false;
+      swiper.autoplay.start();
+      solutionSwiper.autoplay.start();
+      solutionSwiper.mousewheel.enable();
+      solutionSwiper.params.loop = false;
+    } else {
+      swiper.mousewheel.enable();
+      swiper.params.loop = false;
+      swiper.autoplay.stop();
+      solutionSwiper.autoplay.stop();
+      solutionSwiper.mousewheel.enable();
+      solutionSwiper.params.loop = false;
+    }
+    swiper.update();
+    solutionSwiper.update();
+  }
+
+  function toggleAutoplayOnVisibility(swiperInstance, swiperSelector) {
+    const swiperEl = document.querySelector(swiperSelector);
+    if (!swiperEl) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (window.innerWidth <= 1230) {
+            // 모바일에서만 autoplay 적용
+            if (entry.isIntersecting) {
+              swiperInstance.autoplay.start();
+            } else {
+              swiperInstance.autoplay.stop();
+            }
+          } else {
+            swiperInstance.autoplay.stop(); // PC에서는 autoplay 무조건 중지
+          }
+        });
+      },
+      { root: null, threshold: 0.5 }
+    );
+
+    observer.observe(swiperEl);
+  }
+
+  // 초기 설정 (PC & 모바일 체크)
+  function updateSwiperAutoplay() {
+    if (window.innerWidth <= 1230) {
+      toggleAutoplayOnVisibility(swiper, '.wheelSwiper');
+      toggleAutoplayOnVisibility(solutionSwiper, '.solutionSwiper');
+    } else {
+      swiper.autoplay.stop();
+      solutionSwiper.autoplay.stop();
+    }
+  }
+
+  window.addEventListener('resize', updateSwiperSettings);
+  updateSwiperSettings();
+
+  // 슬라이드가 화면 중간으로 이동하는 기능
+  function activateScrollToCenter() {
+    const sections = document.querySelectorAll(
+      '.scroll_section, .solution_section'
+    );
+
+    const observerOptions = {
+      root: null,
+      threshold: 0.5,
+    };
+
+    function handleScroll(entries) {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          let sectionCenter;
+          if (entry.target.classList.contains('solution_section')) {
+            sectionCenter =
+              entry.target.offsetTop + entry.target.offsetHeight / 2 - 120;
+          } else {
+            sectionCenter =
+              entry.target.offsetTop + entry.target.offsetHeight / 2 - 70;
+          }
+          const windowCenter = window.innerHeight / 2;
+
+          window.scrollTo({
+            top: sectionCenter - windowCenter,
+            behavior: 'smooth',
+          });
+        }
+      });
+    }
+
+    const observer = new IntersectionObserver(handleScroll, observerOptions);
+    sections.forEach((section) => observer.observe(section));
+  }
+
+  // 필터링 기능
+  const items = Array.from(document.querySelectorAll('.list .item'));
+  const buttons = document.querySelectorAll('.button_wrap button');
+  let currentFilter = 'all';
+  let visibleCount = 6;
+
+  const updateVisibleItems = () => {
+    let filteredItems =
+      currentFilter === 'all'
+        ? items
+        : items.filter((item) => item.classList.contains(currentFilter));
+
+    items.forEach((item) => (item.style.display = 'none'));
+    filteredItems
+      .slice(0, visibleCount)
+      .forEach((item) => (item.style.display = 'flex'));
+  };
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      currentFilter = button.className.split(' ')[0];
+      visibleCount = 6;
+      buttons.forEach((btn) => btn.classList.remove('on'));
+      button.classList.add('on');
+      updateVisibleItems();
+    });
+  });
+
+  //백그라운드 비디오 재생
+  document.addEventListener('scroll', () => {
+    const words = document.querySelectorAll('.word');
+    const viewportHeight = window.innerHeight;
+    let closestWord = null;
+    let minDistance = Infinity;
+
+    words.forEach((word) => {
+      const rect = word.getBoundingClientRect();
+      const distance = Math.abs(
+        rect.top + rect.height / 2 - viewportHeight / 2
+      );
+
+      if (
+        distance < minDistance &&
+        rect.top >= 0 &&
+        rect.bottom <= viewportHeight
+      ) {
+        minDistance = distance;
+        closestWord = word;
+      }
+    });
+
+    words.forEach((word) => {
+      const video = word.querySelector('video');
+      if (word === closestWord) {
+        word.classList.add('active');
+        video.play();
+      } else {
+        word.classList.remove('active');
+        video.pause();
+        video.currentTime = 0; // 비디오를 처음으로 되돌림
+      }
+    });
+  });
+
+  // 이미지 스크롤 시 변경
+  function updateImageBasedOnPosition() {
+    const imageBox = document.querySelector('.image_box');
+    const images = document.querySelectorAll('.image_box img');
+    if (!imageBox || images.length === 0) return;
+
+    const windowHeight = window.innerHeight;
+    const imageBoxRect = imageBox.getBoundingClientRect();
+    const imageBoxTop = imageBoxRect.top;
+    const imageBoxBottom = imageBoxRect.bottom;
+
+    // 화면 높이의 80% ~ 110% 안에 위치할 때만 변경
+    const minVisible = windowHeight * 0.8;
+    const maxVisible = windowHeight * 1.1;
+
+    if (imageBoxBottom > minVisible && imageBoxTop < maxVisible) {
+      // `ratio`를 image_box가 80% ~ 110% 사이에서 움직이는 전체 거리 기준으로 계산
+      const totalRange = maxVisible - minVisible;
+      const progress = Math.max(
+        0,
+        Math.min((imageBoxBottom - minVisible) / totalRange, 1)
+      );
+
+      // 전체 이미지 개수만큼 비율에 맞춰 인덱스 계산
+      const index = Math.floor(progress * (images.length - 1));
+
+      showImage(index);
+    } else if (imageBoxBottom <= minVisible) {
+      // image_box가 화면을 벗어나 아래쪽으로 내려갔을 때 첫 번째 이미지로 고정
+      showImage(0);
+    } else if (imageBoxTop >= maxVisible) {
+      // image_box가 위쪽으로 완전히 올라갔을 때 마지막 이미지로 고정
+      showImage(images.length - 1);
+    }
+  }
+
+  function showImage(index) {
+    const images = document.querySelectorAll('.image_box img');
+    images.forEach((img, i) => {
+      img.style.opacity = i === index ? 1 : 0;
+    });
+  }
+
+  applyImageScaleEffect();
+  enableDelayedScrollTransition();
+  activateScrollToCenter();
+  updateSwiperAutoplay();
+  // 더 큰 가능성을 향한 도전
+  window.addEventListener('scroll', updateImageBasedOnPosition);
+  updateImageBasedOnPosition(); // 초기 실행
+  updateVisibleItems();
+  AOS.init();
+});

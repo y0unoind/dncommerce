@@ -1,0 +1,43 @@
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body,
+html {
+  cursor: none;
+}
+svg {
+  display: none;
+}
+
+
+.Cursor {
+    pointer-events: none;
+    position: fixed;
+    display: block;
+    border-radius: 50%;
+    transform-origin: center center;
+    mix-blend-mode: difference; /* 여기에 적용 */
+    top: 0;
+    left: 0;
+    z-index: 9999999;
+    filter: url("#goo");
+    will-change: transform, mix-blend-mode;
+}
+  
+.Cursor span {
+    position: absolute;
+    display: block;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: white; /* 기본 색상 */
+    transform-origin: center center;
+    transform: translate(-50%, -50%);
+}
+/* ✅ 모바일에서는 커서 숨김 */
+@media (max-width: 498px) {
+    .Cursor {
+        display: none !important;
+    }
+}

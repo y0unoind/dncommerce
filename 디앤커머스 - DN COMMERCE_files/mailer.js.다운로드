@@ -1,0 +1,14 @@
+/* Email JS 메일 전송 함수 */
+function sendMail() {
+  // emailjs.sendForm(serviceID, templateID, templateParams, publicKey);
+  emailjs.sendForm('service_itws41y', 'template_bvihfye', '#my_form').then(
+    function (response) {
+      console.log('SUCCESS!', response.status, response.text);
+      location.href = '/';
+    },
+    function (error) {
+      console.log('FAILED...', error);
+      location.href = '/';
+    }
+  );
+}

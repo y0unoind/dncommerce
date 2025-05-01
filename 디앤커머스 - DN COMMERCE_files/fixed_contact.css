@@ -1,0 +1,38 @@
+@charset "utf-8";
+
+/* fixed_contact */
+
+.fixed_contact {
+  position: fixed;
+  clear: both;
+  width: 48px;
+  height: 206px;
+  top: 50%;
+  margin-top: -103px;
+  right: 0;
+  z-index: 9999;
+  backdrop-filter: blur(10px); /* 배경 블러 효과 */
+  cursor: pointer;
+  mix-blend-mode: difference;
+}
+.fixed_contact a {
+  width: 100%;
+}
+.fixed_contact a img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media screen and (max-width: 690px) {
+  .fixed_contact {
+    width: 28px;
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .fixed_contact {
+    width: 24px;
+    height: auto;
+  }
+}

@@ -1,0 +1,103 @@
+$(document).ready(function () {
+  // 페이지 로드 시 1초 동안 스크롤 막기
+  $('body').css('overflow', 'hidden');
+
+  setTimeout(() => {
+    $('body').css('overflow', 'auto');
+  }, 1500); // 1초 후 스크롤 가능하게 변경
+
+  const blackBoxes = document.querySelectorAll('.black-box');
+  let completedAnimations = 0;
+
+  blackBoxes.forEach((box, index) => {
+    // 순차적으로 drop -> slide-out 실행되도록 설정
+    box.style.animationDelay = `${index * 0.1}s, ${1 + index * 0.1}s`;
+
+    // slide-out 애니메이션이 끝난 박스 개별 삭제
+    box.addEventListener('animationend', function (event) {
+      if (event.animationName === 'slide-out') {
+        // slide-out이 끝난 후 실행
+        box.style.opacity = '0'; // opacity로 사라지게 설정
+        box.style.visibility = 'hidden'; // visibility로 숨기기
+        box.style.transform = 'translateY(100%)'; // translateY로 화면 아래로 이동
+        completedAnimations++;
+
+        // 모든 박스 애니메이션 완료 후 box_wrap 삭제
+        if (completedAnimations === blackBoxes.length) {
+          // box_wrap을 삭제하기 전에 모든 black-box가 숨겨졌는지 확인
+          setTimeout(() => {
+            document.querySelector('.box_wrap').remove();
+          }, 100); // 애니메이션 끝난 후 약간의 딜레이 후 삭제
+        }
+      }
+    });
+  });
+
+  // PC 네비게이션 마우스 오버 시 2차 메뉴 슬라이드 다운
+  $('.pc_nav .depth01, .pc_nav .depth02').mouseenter(function () {
+    $('.pc_nav .depth02, .depth02_bg').stop().slideDown();
+  });
+
+  // PC 네비게이션 마우스 아웃 시 2차 메뉴 슬라이드 업
+  $('.pc_nav .depth01, .pc_nav .depth02').mouseleave(function () {
+    $('.pc_nav .depth02, .depth02_bg').stop().slideUp();
+  });
+
+  // 모바일 메뉴 토글 기능
+  let isMenuOpen = false; // 메뉴 열린 상태 추적
+
+  $('.menu_btn').on('click', function () {
+    $('.mobile_nav').toggleClass('on');
+    $('.menu_btn').toggleClass('on');
+    //$('.header').toggleClass('on');
+
+    if (!isMenuOpen) {
+      // 메뉴가 열릴 때 무조건 _w 이미지로 변경
+      $('.logo img').attr('src', '/image/logo_w.svg');
+      $('.menu_btn img').attr('src', '/image/header_plus_w.svg');
+      //$('body').css('overflow', 'hidden'); // 메뉴 열림 시 스크롤 막기
+    } else {
+      // 메뉴가 닫힐 때 스크롤 위치에 따라 이미지 결정
+      if ($(window).scrollTop() === 0) {
+        $('.logo img').attr('src', '/image/logo_b.svg');
+        $('.menu_btn img').attr('src', '/image/header_plus_b.svg');
+      } else {
+        $('.logo img').attr('src', '/image/logo_w.svg');
+        $('.menu_btn img').attr('src', '/image/header_plus_w.svg');
+      }
+      //$('body').css('overflow', 'auto'); // 메뉴 닫힘 시 스크롤 가능
+    }
+
+    isMenuOpen = !isMenuOpen; // 메뉴 열린 상태 반전
+  });
+
+  // 스크롤 이벤트 - 헤더 및 로고 변경
+  $(window).on('scroll', function () {
+    if ($(window).scrollTop() > 0) {
+      $('.header').addClass('on');
+      $('.depth02_bg').addClass('on');
+      $('.logo img').attr('src', '/image/logo_w.svg');
+      $('.menu_btn img').attr('src', '/image/header_plus_w.svg');
+    } else {
+      $('.header').removeClass('on');
+      $('.depth02_bg').removeClass('on');
+      $('.logo img').attr('src', '/image/logo_b.svg');
+      $('.menu_btn img').attr('src', '/image/header_plus_b.svg');
+    }
+  });
+
+  // 모바일 네비게이션에서 depth01 클릭 시 depth02 슬라이드 토글
+  // $('.mobile_nav .depth01').on('click', function () {
+  //   let submenu = $(this).next('.depth02');
+  //   if (submenu.length) {
+  //     $('.mobile_nav .depth02').not(submenu).slideUp(); // 다른 메뉴 닫기
+  //     submenu.stop().slideToggle(); // 현재 클릭한 메뉴 토글
+  //     $(this).toggleClass('active'); // 활성화 클래스 추가/제거
+
+  //     $('.mobile_nav .depth01').not(this).removeClass('active'); // 다른 depth01에서 active 제거
+  //   }
+  // });
+
+  /* aos */
+  AOS.init();
+});

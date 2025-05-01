@@ -1,0 +1,490 @@
+@charset "utf-8";
+
+/* 스타일 초기화 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: #333;
+  display: block;
+  cursor: pointer;
+}
+body {
+  overflow-x: hidden;
+  font-family: "Pretendard-Regular";
+}
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+html {
+  font-size: 16px; /* 기본 값이 16px */
+}
+@media (max-width: 1440px) {
+  html {
+    font-size: 12px !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  html {
+    font-size: 10.67px !important;
+  }
+}
+
+/* ✅ 큰 화면에서 폰트 크기 증가 */
+@media (min-width: 1920px) {
+  html {
+    font-size: 16px !important;
+  }
+}
+
+@media (min-width: 2560px) {
+  html {
+    font-size: 21.3333px !important;
+  }
+}
+
+/* 웹폰트 */
+@font-face {
+  font-family: "Pretendard";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Pretendard-Medium";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff")
+    format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Pretendard-SemiBold";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff")
+    format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Pretendard-Bold";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff")
+    format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Bricolage Grotesque-Regular";
+  src: url(https://fonts.gstatic.com/s/bricolagegrotesque/v7/3y9H6as8bTXq_nANBjzKo3IeZx8z6up5BeSl9D4dj_x9PpZBMnuECoAsyJBOm_OJWiewA1Xp.woff2)
+    format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Bricolage Grotesque-Medium";
+  src: url(https://fonts.gstatic.com/s/bricolagegrotesque/v7/3y9H6as8bTXq_nANBjzKo3IeZx8z6up5BeSl9D4dj_x9PpZBMnuECoAsyJBOm_OJaCewA1Xp.woff2)
+    format("woff2");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Bricolage Grotesque-SemiBold";
+  src: url(https://fonts.gstatic.com/s/bricolagegrotesque/v7/3y9H6as8bTXq_nANBjzKo3IeZx8z6up5BeSl9D4dj_x9PpZBMnuECoAsyJBOm_OJhCCwA1Xp.woff2)
+    format("woff2");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Bricolage Grotesque-Bold";
+  src: url(https://fonts.gstatic.com/s/bricolagegrotesque/v7/3y9H6as8bTXq_nANBjzKo3IeZx8z6up5BeSl9D4dj_x9PpZBMnuECoAsyJBOm_OJvSCwA1Xp.woff2)
+    format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap");
+
+.thankyou_message {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  z-index: 9999999;
+}
+/* 초기 스타일 */
+#loading-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0);
+  opacity: 1; /* 처음에는 보이도록 설정 */
+  transition: opacity 1s ease; /* 페이드아웃 애니메이션 */
+  z-index: 2;
+}
+
+#main-content {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  opacity: 0; /* 처음에는 투명하게 설정 */
+  transition: opacity 1s ease; /* 페이드인 애니메이션 */
+  z-index: 1;
+}
+
+.header {
+  width: 100%;
+  height: 100px;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: 0.3s;
+  font-family: "Bricolage Grotesque-Medium";
+  z-index: 99999 !important;
+  pointer-events: auto !important;
+}
+.header.on {
+  background: linear-gradient(hsla(0, 0%, 63%, 0.4), hsla(0, 0%, 40%, 0.4));
+}
+/* .header:hover {
+    background-color: #fff;
+} */
+.header .inner {
+  /* max-width: 1800px; */
+  width: 100%;
+  /* width: calc(100 - 120px); */
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 3.125vw;
+}
+.header .logo img {
+  max-width: 265px;
+  width: 100%;
+  z-index: 9999;
+  position: relative;
+  transition: opacity 0.5s ease-in-out;
+}
+.header .inner .pc_nav {
+  height: 100%;
+  font-size: 1.25rem;
+  width: 100%;
+  letter-spacing: calc(-0.01 * 1.125rem);
+}
+.header .inner .pc_nav .gnb {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.header .inner .pc_nav .gnb > li a {
+  transition: 0.2s;
+}
+.header .inner .pc_nav .gnb > li:hover > a {
+  color: #1500ff;
+}
+.header .inner .pc_nav .gnb > li .depth01 {
+  line-height: 100px;
+  padding: 0 70px;
+  display: block;
+  transition: 0.3;
+  cursor: pointer;
+}
+.header.on .inner .pc_nav .gnb > li .depth01 {
+  color: #fff;
+}
+.header .inner .pc_nav .gnb > li .depth02 {
+  text-align: center;
+  display: none;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px;
+  /* background-color: #fff;
+    backdrop-filter: blur(5px); */
+  transition: 0.3;
+}
+.header .inner .pc_nav .gnb > li .depth02 li {
+  padding: 20px 0;
+}
+/* .header:hover .inner  .pc_nav .gnb >li .depth02 {
+    background-color: #fff;
+} */
+.header.on .inner .pc_nav .gnb > li .depth02 {
+  color: #fff;
+  /* background: linear-gradient(hsla(0,0%,63%,.4),hsla(0,0%,40%,.4)); */
+}
+/* .header .inner  .pc_nav .gnb >li .depth02 li {
+    padding: 15px 0;
+} */
+
+/* .header .inner  .pc_nav .gnb >li:hover .depth02 {
+    display: flex;
+}  */
+.header .inner .pc_nav .gnb > li .depth02 li a {
+  transition: 0.3s;
+}
+.header.on .inner .pc_nav .gnb > li .depth02 li a {
+  color: #fff;
+}
+.header .inner .pc_nav .gnb > li .depth02 li:hover a {
+  color: #1500ff;
+}
+.header .inner .menu_btn {
+  z-index: 99999;
+  transition: 0.5s;
+  width: 20px;
+  cursor: pointer;
+}
+.header .inner .menu_btn img {
+  width: 100%;
+  transition: opacity 0.5s ease-in-out;
+}
+.header .inner .menu_btn.on {
+  transform: rotate(225deg);
+}
+
+.pc_bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  backdrop-filter: blur(10px);
+  z-index: 99;
+}
+.pc_bg span {
+  position: absolute;
+  left: -99999px;
+}
+.depth02_bg {
+  position: fixed;
+  top: 100px;
+  left: 0;
+  width: 100%;
+  height: 320px;
+  background-color: #fff;
+  backdrop-filter: blur(10px);
+  z-index: 99;
+  display: none;
+}
+.depth02_bg.on {
+  background: linear-gradient(hsla(0, 0%, 63%, 0.4), hsla(0, 0%, 40%, 0.4));
+}
+.depth02_bg span {
+  position: absolute;
+  left: -99999px;
+}
+
+.header .mobile_nav {
+  width: 100%;
+  height: 100vh;
+  z-index: 11;
+  position: fixed;
+  top: -5000%;
+  left: 0%;
+  transition: top 0.7s;
+  overflow: hidden;
+  background-color: #fff;
+  background: url(/image/menu_bg.png);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.header .mobile_nav::-webkit-scrollbar {
+  display: none;
+}
+
+.header .mobile_nav .gnb {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; /* 🔹 큰 제목 간격 */
+}
+
+.header .mobile_nav .gnb li {
+  display: flex;
+  align-items: center; /* 🔹 세로 가운데 정렬 */
+  justify-content: left;
+  gap: 50px; /* 🔹 큰 제목과 작은 메뉴 사이 간격 */
+  position: relative;
+}
+.header .mobile_nav .gnb li a:first-child {
+  align-items: flex-end; /* 🔹 세로 가운데 정렬 */
+  display: flex;
+  align-self: flex-start;
+  flex-direction: column;
+}
+
+.header .mobile_nav .gnb li .depth01 {
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: right; /* 🔹 제목을 오른쪽 정렬 */
+  flex: none;
+  white-space: nowrap; /* 🔹 줄바꿈 방지 */
+  color: #fff;
+  min-width: 200px; /* 🔹 모든 큰 제목이 같은 너비를 가지도록 설정 */
+}
+
+.header .mobile_nav .gnb li .depth02 {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* 🔹 작은 글자 간격 */
+  text-align: left; /* 🔹 서브메뉴 왼쪽 정렬 */
+  font-size: 1.75rem;
+  line-height: 1.4;
+  min-width: 250px; /* 🔹 모든 작은 글자가 동일한 너비를 가지도록 설정 */
+  align-self: auto;
+}
+
+.header .mobile_nav .gnb li .depth02 a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.header .mobile_nav.on {
+  top: 0;
+}
+
+@keyframes drop {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-out {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.black-box {
+  position: absolute;
+  top: 0;
+  width: 25vw;
+  height: 100vh;
+  background: #121212;
+  transform: translateY(-100%);
+  animation: drop 0.3s ease-in-out, slide-out 0.5s ease-in-out 1s;
+  animation-fill-mode: forwards;
+  z-index: 999999;
+}
+
+/* 박스 위치 설정 */
+.black-box:nth-child(1) {
+  left: 75vw;
+}
+.black-box:nth-child(2) {
+  left: 50vw;
+}
+.black-box:nth-child(3) {
+  left: 25vw;
+}
+.black-box:nth-child(4) {
+  left: 0;
+}
+
+/* 순차적으로 사라지는 애니메이션 딜레이 적용 */
+.black-box:nth-child(1) {
+  animation-delay: 0.1s, 1.1s;
+}
+.black-box:nth-child(2) {
+  animation-delay: 0.2s, 1.2s;
+}
+.black-box:nth-child(3) {
+  animation-delay: 0.3s, 1.3s;
+}
+.black-box:nth-child(4) {
+  animation-delay: 0.4s, 1.4s;
+}
+
+@media screen and (min-width: 1921px) {
+  .header .mobile_nav {
+    top: -5000%;
+  }
+}
+
+@media screen and (max-width: 1230px) {
+  .pc_nav {
+    display: none; /* PC용 내비게이션 숨김 */
+  }
+
+  .header {
+    height: 80px;
+  }
+  .header .inner .pc_nav .gnb > li .depth01 {
+    line-height: 80px;
+  }
+  .header .inner {
+    width: calc(100 - 60px);
+    padding: 0 30px;
+  }
+  .header .logo img {
+    width: 70%;
+  }
+  .header .mobile_nav .gnb {
+    margin-top: 0vh;
+  }
+  .header .inner .menu_btn img {
+    width: 80%;
+  }
+  .pc_bg {
+    height: 80px;
+  }
+}
+@media screen and (max-width: 690px) {
+  .header .inner {
+    width: calc(100 - 30px);
+    padding: 0 15px;
+  }
+
+  .header .logo img {
+    width: 55%;
+  }
+
+  .header .mobile_nav .gnb li {
+    gap: 20px;
+    width: 100%;
+  }
+  .header .mobile_nav {
+    top: -1500%;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .header .mobile_nav .gnb {
+    gap: 1.75rem;
+    width: 110%;
+  }
+}
