@@ -264,7 +264,7 @@ body {
 }
 
 .main_visual video {
-position: absolute;
+    position: absolute;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -547,28 +547,32 @@ position: absolute;
 
 .section03 .inner .list .item:nth-child(2) {
     background-image:
-    linear-gradient(transparent, #000),
-    url('../img/42_m_gobul.png');
+        linear-gradient(transparent, #000),
+        url('../img/42_m_gobul.png');
 }
+
 .section03 .inner .list .item:nth-child(3) {
     background-image:
-    linear-gradient(transparent, #000),
-    url('../img/w_jungaedam.png');
+        linear-gradient(transparent, #000),
+        url('../img/w_jungaedam.png');
 }
+
 .section03 .inner .list .item:nth-child(4) {
     background-image:
-    linear-gradient(transparent, #000),
-    url('../img/c_samsung.png');
+        linear-gradient(transparent, #000),
+        url('../img/c_samsung.png');
 }
+
 .section03 .inner .list .item:nth-child(5) {
     background-image:
-    linear-gradient(transparent, #000),
-    url('../img/chicken.png');
+        linear-gradient(transparent, #000),
+        url('../img/chicken.png');
 }
+
 .section03 .inner .list .item:nth-child(6) {
     background-image:
-    linear-gradient(transparent, #000),
-    url('../img/7_s_founder_01.png');
+        linear-gradient(transparent, #000),
+        url('../img/7_s_founder_01.png');
 }
 
 
@@ -953,18 +957,20 @@ position: absolute;
     width: 10%;
 }
 
-.fixed-contact{
+.fixed-contact {
     position: fixed;
     width: 48px;
     height: 206px;
     top: 50%;
-    right:0;
+    right: 0;
     margin-top: -30px;
     z-index: 9999;
 }
-.fixed-contact a{
- width: 100%;
+
+.fixed-contact a {
+    width: 100%;
 }
+
 .fixed-contact a img {
     max-width: 100%;
     height: auto;
@@ -986,15 +992,19 @@ position: absolute;
         display: none;
         overflow: hidden;
     }
-    .header .mobile_nav .gnb li  {
+
+    .header .mobile_nav .gnb li {
         gap: 20px;
     }
+
     .header .mobile_nav .gnb li a:first-child {
         font-size: 2rem;
     }
-    .header .mobile_nav .gnb li .depth-02 a{
+
+    .header .mobile_nav .gnb li .depth-02 a {
         font-size: 1.125rem;
     }
+
     .pc_bg {
         display: none;
     }
@@ -1007,10 +1017,13 @@ position: absolute;
         width: 55%;
     }
 
- 
+
     .main_visual p {
         font-size: 1rem;
+
     }
+
+
 
     .main_visual p:nth-of-type(2) {
         bottom: 16.9vh;
@@ -1023,9 +1036,9 @@ position: absolute;
         font-size: 21px;
     }
 
-    .main_visual.start{
+    .main_visual.start {
         width: 100%;
-        max-height: 80vh;   
+        max-height: 80vh;
     }
 
     .section01 {}
@@ -1119,28 +1132,26 @@ position: absolute;
         padding-bottom: 3.625rem;
     }
 
-    .section04 .inner .solutionSwiper {
-   
-    }
+    .section04 .inner .solutionSwiper {}
 
     .section04 .inner .solutionSwiper .swiper-wrapper {}
 
-    .section04 .inner .solutionSwiper .swiper-wrapper .swiper-slide {
-    
-    }
+    .section04 .inner .solutionSwiper .swiper-wrapper .swiper-slide {}
 
-    .section04 .inner .solutionSwiper .swiper-wrapper .swiper-slide img {
-   
-    }
+    .section04 .inner .solutionSwiper .swiper-wrapper .swiper-slide img {}
 
     .section05 {}
-    .section05 .word-container{}
-    .section05 .word-container .word{
+
+    .section05 .word-container {}
+
+    .section05 .word-container .word {
         height: 40vh;
     }
-    .section05 .word-container .word h4{
+
+    .section05 .word-container .word h4 {
         font-size: 5rem;
     }
+
     .section06 .inner .text h1 {
         margin-top: 0;
         font-size: 2.3125rem;
@@ -1152,7 +1163,7 @@ position: absolute;
     }
 
     .section06 .inner .wrap {
-  
+
         width: 80%;
     }
 
@@ -1174,17 +1185,23 @@ position: absolute;
 
 
 
-
-
+@media (max-width: 754px) {
+    .section02 .scrollSwiper .swiper-slide .text h2 {
+        font-size: 2.2rem;
+    }
+}
 
 
 
 /* 모바일 (1열) */
 @media (max-width: 480px) {
 
-    .fixed-contact{
+    .fixed-contact {
         width: 28px;
         height: auto;
+    }
+    .main_visual p:first-of-type{
+        top: 5.96vh;
     }
     .section01 {}
 
@@ -1203,14 +1220,16 @@ position: absolute;
     .section01 a {
         font-size: 28px;
     }
-   
+
     .section02 .scrollSwiper .swiper-slide .text h2 {
         font-size: 24px;
     }
 
     .section05 {}
-    .section05 .word-container{}
-    .section05 .word-container .word{
+
+    .section05 .word-container {}
+
+    .section05 .word-container .word {
         height: 30vh;
     }
 
@@ -1218,6 +1237,7 @@ position: absolute;
         font-size: 2rem;
         margin-bottom: 3.75rem;
     }
+
     .footer {
         font-size: 0.875rem;
     }
@@ -1243,13 +1263,16 @@ position: absolute;
         flex-direction: column;
         row-gap: 30px;
     }
+
     .footer .footer_container .footer_top .text .textbottom {
         display: flex;
         justify-content: space-between;
     }
+
     .footer .footer_container .footer_top .text .text-top .footer_info {
         white-space: nowrap;
     }
+
     .footer .footer_container .footer_bottom {
         flex-direction: column;
         margin-top: 40px;
@@ -1262,5 +1285,13 @@ position: absolute;
     .footer .footer_container .footer_bottom img {
         width: 40%;
         margin-top: 20px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+
+
+    .section07 h3 {
+        font-size: 1.625rem;
     }
 }
