@@ -103,25 +103,38 @@
             });
 
             $(document).ready(function () {
-                var swiper = new Swiper('.solutionSwiper', {
-                    effect: "coverflow",
-                    grabCursor: true,
-                    centeredSlides: true,
-                    slidesPerView: 3,
-                    spaceBetween: 0,
-                    coverflowEffect: {
-                        rotate: 30,      // 양 옆 슬라이드 회전 각도
-                        stretch: 0,      // 슬라이드 사이 간격을 당겨줌
-                        depth: 150,      // z축 깊이
-                        modifier: 1,     // 효과 강도
-                        slideShadows: false,
-                    },
-                    pagination: {
-                        el: '.swiper-pagination',
-                        clickable: true
-                    }
-                });
-            });
+    var swiper = new Swiper('.solutionSwiper', {
+        effect: "coverflow",
+        grabCursor: true,
+        centeredSlides: true,
+        coverflowEffect: {
+            rotate: 30,      // 양 옆 슬라이드 회전 각도
+            stretch: 0,      // 슬라이드 사이 간격을 당겨줌
+            depth: 150,      // z축 깊이
+            modifier: 1,     // 효과 강도
+            slideShadows: false,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true
+        },
+        breakpoints: {
+            0: {
+                slidesPerView: 1.2,
+                spaceBetween: 10
+            },
+            768: {
+                slidesPerView: 2,
+                spaceBetween: 20
+            },
+            1024: {
+                slidesPerView: 3,
+                spaceBetween: 30
+            }
+        }
+    });
+});
+
 
         });
     </script>

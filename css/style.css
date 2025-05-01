@@ -1225,6 +1225,20 @@ body {
         font-size: 24px;
     }
 
+
+    .section04 .inner .solutionSwiper {
+   
+    }
+
+    .section04 .inner .solutionSwiper .swiper-wrapper {}
+
+    .section04 .inner .solutionSwiper .swiper-wrapper .swiper-slide {}
+
+    .section04 .inner .solutionSwiper .swiper-wrapper .swiper-slide img {}
+
+    .section05 {}
+
+    .section05 .word-container {}
     .section05 {}
 
     .section05 .word-container {}
