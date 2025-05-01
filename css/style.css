@@ -264,7 +264,7 @@ body {
 }
 
 .main_visual video {
-    position: absolute;
+position: absolute;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -520,7 +520,7 @@ body {
     row-gap: 3vw;
 }
 
-
+/* Project  아이템 */
 .section03 .inner .list .item {
     background-image:
         linear-gradient(transparent, #000),
@@ -544,6 +544,33 @@ body {
     overflow: hidden;
     z-index: 1;
 }
+
+.section03 .inner .list .item:nth-child(2) {
+    background-image:
+    linear-gradient(transparent, #000),
+    url('../img/42_m_gobul.png');
+}
+.section03 .inner .list .item:nth-child(3) {
+    background-image:
+    linear-gradient(transparent, #000),
+    url('../img/w_jungaedam.png');
+}
+.section03 .inner .list .item:nth-child(4) {
+    background-image:
+    linear-gradient(transparent, #000),
+    url('../img/c_samsung.png');
+}
+.section03 .inner .list .item:nth-child(5) {
+    background-image:
+    linear-gradient(transparent, #000),
+    url('../img/chicken.png');
+}
+.section03 .inner .list .item:nth-child(6) {
+    background-image:
+    linear-gradient(transparent, #000),
+    url('../img/7_s_founder_01.png');
+}
+
 
 .section03 .inner .list .item .item_title {
     font-size: 2.5rem;
@@ -626,13 +653,14 @@ body {
 
 .solutionSwiper {
     width: 100%;
-    overflow: hidden;
-
-    overflow: hidden;
+    height: 100%;
 
 }
 
-.solutionSwiper .swiper-wrapper {}
+.solutionSwiper .swiper-wrapper {
+    width: 100%;
+    height: 100%;
+}
 
 .solutionSwiper .swiper-wrapper .swiper-slide {
     width: 635px;
@@ -749,7 +777,7 @@ body {
 }
 
 .section06 .inner .wrap {
-    max-width: 990px;
+    max-width: 976px;
 }
 
 .section06 .inner .wrap .image {
@@ -849,7 +877,7 @@ body {
 }
 
 .section08 img:nth-of-type(1) {
-    width: 800px;
+    width: 41.6vw;
 }
 
 .section08 img:nth-of-type(2) {
@@ -923,20 +951,25 @@ body {
     width: 10%;
 }
 
+.fixed-contact{
+    position: fixed;
+    width: 48px;
+    height: 206px;
+    top: 50%;
+    right:0;
+    margin-top: -30px;
+    z-index: 9999;
+}
+.fixed-contact a{
+ width: 100%;
+}
+.fixed-contact a img {
+    max-width: 100%;
+    height: auto;
+}
 
 
-
-
-
-
-
-
-
-
-
-/* 모바일 (1열) */
-@media (max-width: 480px) {
-
+@media screen and (max-width: 1024px) {
     .header {
         position: relative;
         height: 80px;
@@ -944,13 +977,22 @@ body {
 
     .header .inner {
         width: calc(100% - 30px);
+        justify-content: space-between;
     }
 
     .header .inner .nav {
         display: none;
         overflow: hidden;
     }
-
+    .header .mobile_nav .gnb li  {
+        gap: 20px;
+    }
+    .header .mobile_nav .gnb li a:first-child {
+        font-size: 2rem;
+    }
+    .header .mobile_nav .gnb li .depth-02 a{
+        font-size: 1.125rem;
+    }
     .pc_bg {
         display: none;
     }
@@ -963,12 +1005,14 @@ body {
         width: 55%;
     }
 
+ 
     .main_visual p {
         font-size: 1rem;
     }
 
     .main_visual p:nth-of-type(2) {
-        text-align: left;
+        bottom: 16.9vh;
+        text-align: right;
     }
 
     .main_visual p:nth-of-type(3) {
@@ -977,10 +1021,15 @@ body {
         font-size: 21px;
     }
 
+    .main_visual.start{
+        width: 100%;
+        max-height: 80vh;   
+    }
+
     .section01 {}
 
     .section01 h3 {
-        font-size: 1.5rem;
+        font-size: 2.5rem;
     }
 
     .section01 h3 .mo {
@@ -1001,21 +1050,23 @@ body {
         height: 500px;
     }
 
-    .section02 .scrollSwiper .swiper-slide .text:nth-of-type(1){
-        top:6.41vh
+    .section02 .scrollSwiper .swiper-slide .text:nth-of-type(1) {
+        top: 6.41vh
     }
-    .section02 .scrollSwiper .swiper-slide .text p{
+
+    .section02 .scrollSwiper .swiper-slide .text p {
         font-size: 18px;
         line-height: 150%;
         padding: 0 20px;
     }
+
     .section02 .scrollSwiper .swiper-slide img {
         height: 100%;
         object-fit: cover;
     }
 
     .section02 .scrollSwiper .swiper-slide .text h2 {
-        font-size: 24px;
+        font-size: 3.75rem;
     }
 
     .section03 .inner {
@@ -1027,12 +1078,15 @@ body {
         flex: 1 1 100%;
         padding: 20px;
     }
+
     .section03 .inner .title_wrap h3 {
         font-size: 3.75rem;
     }
+
     .section03 .inner .title_wrap .button_wrap button {
         font-size: 1.25rem;
     }
+
     .section03 .inner .list .item .item_title {
         font-size: 1.375rem;
     }
@@ -1050,19 +1104,156 @@ body {
         border: 1px solid #fff;
         font-size: 1.75rem;
     }
+
     .section04 .inner .title p {
         font-size: 1.31rem;
     }
+
     .section04 .inner .title h3 {
         font-size: 3.75rem;
     }
+
     .section04 .inner .title {
         padding-bottom: 3.625rem;
     }
+
     .section04 .inner .solutionSwiper {
-      padding-bottom: 100px;
+   
     }
-    .section04 .inner .solutionSwiper .swiper-wrapper .swiper-slide{
-        width: 100%;
+
+    .section04 .inner .solutionSwiper .swiper-wrapper {}
+
+    .section04 .inner .solutionSwiper .swiper-wrapper .swiper-slide {
+    
+    }
+
+    .section04 .inner .solutionSwiper .swiper-wrapper .swiper-slide img {
+   
+    }
+
+    .section05 {}
+    .section05 .word-container{}
+    .section05 .word-container .word{
+        height: 40vh;
+    }
+    .section05 .word-container .word h4{
+        font-size: 5rem;
+    }
+    .section06 .inner .text h1 {
+        margin-top: 0;
+        font-size: 2.3125rem;
+    }
+
+    .section06 .inner .text h2 {
+        font-size: 0.875rem;
+        margin: 0 30px;
+    }
+
+    .section06 .inner .wrap {
+  
+        width: 80%;
+    }
+
+    .section07 h3 {
+        font-size: 2rem;
+    }
+
+
+    .section08 {
+        gap: 50px;
+    }
+
+    .section08 a {
+        font-size: 1.125rem;
+    }
+
+
+}
+
+
+
+
+
+
+
+
+/* 모바일 (1열) */
+@media (max-width: 480px) {
+
+    .fixed-contact{
+        width: 28px;
+        height: auto;
+    }
+    .section01 {}
+
+    .section01 h3 {
+        font-size: 1.5rem;
+    }
+
+    .section01 h3 .mo {
+        display: block;
+    }
+
+    .section01 h3 span {
+        width: 30%;
+    }
+
+    .section01 a {
+        font-size: 28px;
+    }
+   
+    .section02 .scrollSwiper .swiper-slide .text h2 {
+        font-size: 24px;
+    }
+
+    .section05 {}
+    .section05 .word-container{}
+    .section05 .word-container .word{
+        height: 30vh;
+    }
+    .footer {
+        font-size: 0.875rem;
+    }
+
+    .footer .footer_container {
+        width: calc(100% - 30px);
+        margin: 0 auto;
+        padding: 30px 0;
+    }
+
+    .footer .footer_container .footer_top .text {
+        font-size: 14px;
+    }
+
+    .footer .footer_container .footer_top {
+        flex-direction: column;
+        row-gap: 30px;
+        width: 70%;
+        flex-wrap: wrap;
+    }
+
+    .footer .footer_container .footer_top .text {
+        flex-direction: column;
+        row-gap: 30px;
+    }
+    .footer .footer_container .footer_top .text .textbottom {
+        display: flex;
+        justify-content: space-between;
+    }
+    .footer .footer_container .footer_top .text .text-top .footer_info {
+        white-space: nowrap;
+    }
+    .footer .footer_container .footer_bottom {
+        flex-direction: column;
+        margin-top: 40px;
+    }
+
+    .footer .footer_container .footer_bottom p {
+        font-size: 12px;
+    }
+
+    .footer .footer_container .footer_bottom img {
+        width: 40%;
+        margin-top: 20px;
     }
 }
