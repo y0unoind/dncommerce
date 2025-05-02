@@ -526,7 +526,7 @@ body {
         linear-gradient(transparent, #000),
         url('../img/bifc.jpg');
 
-        background-size: cover;
+    background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
     display: flex;
@@ -550,7 +550,7 @@ body {
     background-image:
         linear-gradient(transparent, #000),
         url('../img/42_m_gobul.png');
- 
+
 }
 
 .section03 .inner .list .item:nth-child(3) {
@@ -930,9 +930,7 @@ body {
     /* 화살표 상단 배치 */
 }
 
-.footer .footer_container .footer_top .logo {
-   
-}
+.footer .footer_container .footer_top .logo {}
 
 .footer .footer_container .footer_top .logo a {}
 
@@ -949,16 +947,19 @@ body {
     letter-spacing: (-0.05 * 1.25rem);
 
 
-    
+
 }
+
 .footer .footer_container .footer_top .text {
     display: flex;
     justify-content: space-between;
 
 }
+
 .footer .footer_container .footer_top .text .footer_info {
     line-height: 200%;
 }
+
 .footer .footer_container .footer_bottom {
     display: flex;
     justify-content: space-between;
@@ -996,7 +997,7 @@ body {
 
 @media screen and (max-width: 1024px) {
     .header {
-        
+
         height: 80px;
     }
 
@@ -1199,6 +1200,9 @@ body {
         font-size: 1.125rem;
     }
 
+    .footer .footer_container .footer_top .text {
+        font-size: 0.81rem;
+    }
 
 }
 
@@ -1208,20 +1212,30 @@ body {
     .section02 .scrollSwiper .swiper-slide .text h2 {
         font-size: 2.2rem;
     }
-    .footer .footer_container {
-        margin:  0 15px;
+
+    .section08 img:nth-of-type(1) {
+        max-width: 800px;
+        width: calc(100% - 120px);
     }
+
+    .footer .footer_container {
+        margin: 0 15px;
+    }
+
     .footer .footer_container .footer_top {
         display: block;
     }
-    .footer .footer_container .footer_top .text{
-       
+
+    .footer .footer_container .footer_top .text {
+
         row-gap: 30px;
     }
+
     .footer .footer_container .footer_top .text .text-top .footer_info {
         white-space: nowrap;
-        
+
     }
+
     .footer .footer_container .footer_bottom {
         flex-direction: column;
         margin-top: 6.25rem;
@@ -1243,7 +1257,7 @@ body {
         height: auto;
     }
 
-   
+
 
     .section01 {}
 
@@ -1288,10 +1302,10 @@ body {
         height: 30vh;
     }
 
-    
+
     .section06 .inner .text h2 br {
         display: none;
-        
+
     }
 
     .section07 h3 {
@@ -1299,6 +1313,7 @@ body {
         margin-bottom: 3.75rem;
     }
 
+ 
     .footer {
         font-size: 0.875rem;
     }
@@ -1311,7 +1326,7 @@ body {
 
     .footer .footer_container .footer_top .text {
         font-size: 14px;
-        
+
     }
 
     .footer .footer_container .footer_top {
@@ -1322,7 +1337,7 @@ body {
     }
 
     .footer .footer_container .footer_top .text {
-      
+
         row-gap: 30px;
     }
 
@@ -1339,7 +1354,7 @@ body {
 
     .footer .footer_container .footer_bottom {
         flex-direction: column;
-        
+
     }
 
     .footer .footer_container .footer_bottom p {
